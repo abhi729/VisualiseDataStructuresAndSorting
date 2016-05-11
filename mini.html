@@ -1,0 +1,3943 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style type="text/css">
+			#header{ 	
+				height:120px;
+				line-height:70px;
+				background-color:black;				
+				color:white; 
+				text-align:center; 
+				padding:10px;
+				cursor:pointer;
+			}
+			#graphs{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				height:220px;
+				width:420px;
+				left:10px;
+				top:159px;
+				color:white;
+				line-height:170px;
+				cursor:pointer;
+				text-align:center;	
+			}
+			#graphs:hover{
+				background-color:#74C71E;
+			}	
+			#linked{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				height:220px;
+				width:420px;
+				left:460px;
+				top:159px;
+				color:white;
+				line-height:170px;
+				text-align:center;
+				cursor:pointer;	
+			}
+			#linked:hover{
+				background-color:#74C71E;
+			}
+			#stack{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				height:220px;
+				width:420px;
+				left:910px;
+				top:159px;
+				color:white;
+				line-height:170px;
+				text-align:center;
+				cursor:pointer;	
+			}		
+			#stack:hover{
+				background-color:#74C71E;
+			}
+			#queue{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				height:220px;
+				width:420px;
+				left:10px;
+				top:409px;
+				color:white;
+				line-height:170px;
+				text-align:center;	
+				cursor:pointer;
+			}		
+			#queue:hover{
+				background-color:#74C71E;
+			}		
+			#sort{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				height:220px;
+				width:420px;
+				left:910px;
+				top:409px;
+				color:white;
+				line-height:170px;
+				text-align:center;
+				cursor:pointer;	
+			}		
+			#sort:hover{
+				background-color:#74C71E;
+			}
+			#info_main{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				height:220px;
+				width:420px;
+				left:460px;
+				top:409px;
+				color:white;
+				line-height:90px;
+				text-align:center;
+			}
+			#canvas{
+				background-color:cornflowerblue;
+				top:159px;
+				left:350px;
+				position:fixed;
+				display:none;
+			}
+			#instr1{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:380px;
+				top:159px;
+				width:310px;
+				display:none;
+			}
+			#result{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:284px;
+				top:349px;
+				width:310px;
+				display:none;
+			}
+			#info1,#info4{
+				display:none;
+				text-align:center;
+				color:white;
+			}
+			#info2,#info3{
+				display:none;
+				text-align:center;
+				line-height:60px;
+			}
+			#submitnode,#savegraph{
+				background-color:#60A816;
+				color:white;
+				text-align:center;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:65px;	
+				top:569px;
+				width:310px;
+				display:none;
+				cursor:pointer;
+			}
+			#submitnode:hover,#savegraph:hover{
+				background-color:#48EB09;
+			}
+			#entergoal,#enterroot,#selectalgo{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:40px;
+				width:310px;
+				display:none;
+				text-align:center;
+				color:white;
+				cursor:pointer;
+				line-height:2px;
+			}
+			#enterroot{
+				top:159px;
+			}
+			#entergoal{
+				top:219px;
+			}
+			#selectalgo{
+				top:279px;
+			}
+			#enterroot:hover,#entergoal:hover,#selectalgo:hover{
+				background-color:#74C71E;
+			}
+			#dfs,#bfs,#dfid,#dijikstra,#astar{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:350px;
+				height:40px;
+				width:200px;
+				display:none;
+				text-align:center;
+				color:white;
+				cursor:pointer;
+				line-height:2px;	
+			}
+			#astar:hover,#dijikstra:hover,#dfs:hover,#bfs:hover,#dfid:hover{
+				background-color:#48EB09;
+			}
+			#dfs{
+				top:279px;
+			}
+			#bfs{
+				top:339px;
+			}
+			#dfid{
+				top:399px;
+			}
+			#dijikstra{
+				top:459px;	
+			}
+			#astar{
+				top:519px;
+			}
+			#instr_sort,#instr_stack,#instr_queue,#instr_linked{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:235px;
+				top:159px;
+				width:310px;
+				display:none;
+				line-height:45px;
+			}
+			#instr_sort,#instr_linked{
+				line-height:30px;
+			}
+			#instr_stack,#instr_queue{
+				height:235px;
+			}
+			#insert_sort,#proceed_sort,#push_stack,#pop_stack,#enqueue_queue,#dequeue_queue,#single,#single_insertion,#single_deletion,#double,#double_insertion,#double_deletion{
+				background-color:#60A816;
+				color:white;
+				text-align:center;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:90px;	
+				width:310px;
+				display:none;
+				cursor:pointer;
+				line-height:50px;
+			}
+			#proceed_sort:hover,#insert_sort:hover,#push_stack:hover,#pop_stack:hover,#enqueue_queue:hover,#dequeue_queue:hover,#single:hover,#single_insertion:hover,#single_deletion:hover,#double:hover,#double_insertion:hover,#double_deletion:hover{
+				background-color:#48EB09;
+			}
+			#proceed_sort,#pop_stack,#dequeue_queue,#double,#single_deletion,#double_deletion{
+				top:544px;
+			}
+			#insert_sort,#push_stack,#enqueue_queue,#single,#single_insertion,#double_insertion{
+				top:424px;
+			}
+			#sort_menu,#search_menu{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:40px;
+				width:310px;
+				display:none;
+				text-align:center;
+				color:white;
+				cursor:pointer;
+				line-height:2px
+			}
+			#sort_menu:hover,#search_menu:hover{
+				background-color:#48EB09;
+			}
+			#sort_menu{
+				top:159px;
+			}
+			#search_menu{
+				top:219px;
+			}
+			#result_sort{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:344px;
+				top:289px;
+				width:310px;
+				display:none;
+				line-height:50px;
+			}
+			#bubble_sort,#insertion_sort,#selection_sort,#merge_sort,#quick_sort,#linear_search,#binary_search,#heap_sort{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:350px;
+				height:40px;
+				width:250px;
+				display:none;
+				text-align:center;
+				color:white;
+				cursor:pointer;
+				line-height:2px;
+			}
+			#insert_beg,#insert_mid,#insert_end,#delete_beg,#delete_mid,#delete_end,#dinsert_beg,#dinsert_mid,#dinsert_end,#ddelete_beg,#ddelete_mid,#ddelete_end{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:350px;
+				height:40px;
+				width:250px;
+				display:none;
+				text-align:center;
+				color:white;
+				cursor:pointer;
+				line-height:2px;
+			}	
+			#insert_beg:hover,#insert_mid:hover,#insert_end:hover,#delete_beg:hover,#delete_mid:hover,#delete_end:hover,#dinsert_beg:hover,#dinsert_mid:hover,#dinsert_end:hover,#ddelete_beg:hover,#ddelete_mid:hover,#ddelete_end:hover{
+				background-color:#48EB09;
+			}
+			#insert_beg,#dinsert_beg{
+				top:359px;
+			}
+			#insert_mid,#dinsert_mid{
+				top:419px;
+			}
+			#insert_end,#delete_beg,#dinsert_end,#ddelete_beg{
+				top:474px;
+			}		
+			#delete_mid,#ddelete_mid{
+				top:534px;
+			}
+			#delete_end,#ddelete_end{
+				top:594px;
+			}	
+			#bubble_sort:hover,#insertion_sort:hover,#selection_sort:hover,#linear_search:hover,#binary_search:hover,#heap_sort:hover,#merge_sort:hover,#quick_sort:hover{
+				background-color:#48EB09;
+			}
+			#bubble_sort{
+				top:159px;
+			}	
+			#insertion_sort,#linear_search{
+				top:219px;
+			}
+			#selection_sort,#binary_search{
+				top:279px;
+			}
+			#merge_sort{
+				top:339px;
+			}
+			#quick_sort{
+				top:399px;
+			}
+			#heap_sort{
+				top:459px;
+			}
+			#stack_array,#stack_linked,#queue_array,#queue_linked{
+				background-color:#60A816;
+				padding:10px;
+				position:fixed;
+				left:10px;
+				height:108px;
+				width:310px;
+				display:none;
+				text-align:center;
+				color:white;
+				cursor:pointer;
+				line-height:60px;
+			}
+			#stack_array,#queue_array{
+				top:159px;
+			}
+			#stack_linked,#queue_linked{
+				top:287px;
+			}
+			#stack_array:hover,#stack_linked:hover{
+				background-color:#48EB09;
+			}
+			#queue_array:hover,#queue_linked:hover{
+				background-color:#48EB09;
+			}
+
+		</style>							
+	</head>
+	<body>
+		<div id="header">
+			<h1>DATA STRUCTURE TOOL</h1>
+		</div>
+		<div id="info_main">
+			<h2>CLICK ON ANY OF THE 5 MODULES TO PROCEED</h2>
+		</div>
+		<div id="graphs" onclick=loadPageTwoGraph()>
+			<h2>GRAPH ALGORITHMS</h2>
+		</div>
+		<div id="linked" onclick=loadPageTwoLinked()>
+			<h2>LINKED LIST</h2>
+		</div>
+		<div id="single" onclick=implementSingle()>
+			<h3>SINGLE LINKED LIST</h3>
+		</div>
+		<div id="double" onclick=implementDouble()>
+			<h3>DOUBLE LINKED LIST</h3>
+		</div>
+		<div id="single_insertion" onclick=implementSingleInsertion()>
+			<h3>INSERTION</h3>
+		</div>
+		<div id="single_deletion" onclick=implementSingleDeletion()>
+			<h3>DELETION</h3>
+		</div>
+		<div id="double_insertion" onclick=implementDoubleInsertion()>
+			<h3>INSERTION</h3>
+		</div>
+		<div id="double_deletion" onclick=implementDoubleDeletion()>
+			<h3>DELETION</h3>
+		</div>
+		<div id="stack" onclick=loadPageTwoStack()>
+			<h2>STACK</h2>
+		</div>
+		<div id="queue" onclick=loadPageTwoQueue()>
+			<h2>QUEUE</h2>
+		</div>
+		<div id="sort" onclick=loadPageTwoSort()>
+			<h2>SORTING AND SEARCHING</h2>
+		</div>
+		<canvas id="canvas" width="1007" height="495px">
+		</canvas>
+		<div id="instr1">
+			<p id="info1">
+				<font size="5">Click anywhere in the blue area to create nodes.</font>
+			</p>
+			<p id="info2"></p>
+			<p id="info3"></p>
+			<p id="info4">
+				<font size="5">Click on the green button below when nodes are created.</font>
+			</p>
+		</div>
+		<div id="enterroot" onclick=inputRootNode()>
+			<h3>ENTER ROOT NODE</h3>
+		</div>
+		<div id="entergoal" onclick=inputGoalNode()>
+			<h3>ENTER GOAL NODE</h3>
+		</div>
+		<div id="selectalgo" onclick=selectAlgorithm()>
+			<h3>SELECT ALGORITHM</h3>
+		</div>
+		<div id="dfs" onclick=implementDFS(num)>
+			<h3>DFS</h3>
+		</div>
+		<div id="bfs" onclick=implementBFS()>
+			<h3>BFS</h3>
+		</div>
+		<div id="dfid" onclick=implementDFID()>
+			<h3>DFID</h3>
+		</div>
+		<div id="dijikstra" onclick=implementDijikstra()>
+			<h4>DIJIKSTRA</h3>
+		</div>
+		<div id="astar" onclick=implementAStar()>
+			<h4>A-STAR</h3>
+		</div>
+		<div id="submitnode" onclick=loadPageThreeGraph()>
+			<h3>DONE CREATING NODES?</h3>
+		</div>
+		<div id="savegraph" onclick=saveGraph()>
+			<h3>SAVE GRAPH?</h3>
+		</div>
+		<div id="result">
+			<p id="info5"></p>
+			<p id="info6"></p>
+			<p id="info7"></p>
+			<p id="info8"></p>
+			<p id="info9"></p>
+		</div>
+		<div id="instr_sort">
+			<p id="info1_sort">
+				<font size="5">Click on "Insert" to insert a number into array for searching and sorting.</font>
+			</p>
+			<p id="info2_sort">
+				<font size="5">Click on "Proceed" to save the array and proceed with searching and sorting.</font>
+			</p>
+		</div>
+		<div id="instr_linked">
+			<p id="info1_linked">
+				<font size="5">Click on "SINGLE LINKED LIST" for working with a single linked list.</font>
+			</p>
+			<p id="info2_linked">
+				<font size="5">Click on "DOUBLE LINKED LIST" for working with a double linked list.</font>
+			</p>
+		</div>
+		<div id="instr_stack">
+			<p id="info1_stack"><font size="5">Click on "PUSH" to insert a number into stack.</font></p>
+			<p id="info2_stack"><font size="5">Click on "POP" to remove number from stack.</font></p>
+		</div>
+		<div id="instr_queue">
+			<p id="info1_queue"><font size="5">Click on "ENQUEUE" to insert a number into queue.</font></p>
+			<p id="info2_queue"><font size="5">Click on "DEQUEUE" to remove number from queue.</font></p>
+		</div>
+		<div id="stack_array" onclick=createStackUsingArray()>
+			<h3>USING ARRAY</h3>
+		</div>
+		<div id="stack_linked" onclick=createStackUsingLinked()>
+			<h3>USING LINKED LIST</h3>
+		</div>
+		<div id="push_stack" onclick=pushIntoStack()>
+			<h3>PUSH</h3>
+		</div>
+		<div id="pop_stack" onclick=popFromStack()>
+			<h3>POP</h3>
+		</div>
+		<div id="queue_array" onclick=createQueueUsingArray()>
+			<h3>USING ARRAY</h3>
+		</div>
+		<div id="queue_linked" onclick=createQueueUsingLinked()>
+			<h3>USING LINKED LIST</h3>
+		</div>
+		<div id="enqueue_queue" onclick=enqueueIntoQueue()>
+			<h3>ENQUEUE</h3>
+		</div>
+		<div id="dequeue_queue" onclick=dequeueFromQueue()>
+			<h3>DEQUEUE</h3>
+		</div>
+		<div id="insert_sort" onclick=insertNumberForSorting()>
+			<h3>INSERT</h3>
+		</div>
+		<div id="proceed_sort" onclick=proceedToSorting()>
+			<h3>PROCEED</h3>
+		</div>
+		<div id="sort_menu" onclick=selectSortingAlgorithm() >
+			<h3>SORTING</h3>
+		</div>
+		<div id="search_menu" onclick=selectSearchingAlgorithm()>
+			<h3>SEARCHING</h3>
+		</div>
+		<div id="bubble_sort" onclick=implementBubbleSort()>
+			<h3>BUBBLE SORT</h3>
+		</div>
+		<div id="insertion_sort" onclick=implementInsertionSort()>
+			<h3>INSERTION SORT</h3>
+		</div>
+		<div id="selection_sort" onclick=implementSelectionSort()>
+			<h3>SELECTION SORT</h3>
+		</div>
+		<div id="merge_sort" onclick=implementMergeSort()>
+			<h3>MERGE SORT</h3>
+		</div>
+		<div id="quick_sort" onclick=implementQuickSort()>
+			<h3>QUICK SORT</h3>
+		</div>
+		<div id="heap_sort" onclick=implementHeapSort()>
+			<h3>HEAP SORT</h3>
+		</div>
+		<div id="linear_search" onclick=implementLinearSearch()>
+			<h3>LINEAR SEARCH</h3>
+		</div>
+		<div id="binary_search" onclick=implementBinarySearch()>
+			<h3>BINARY SEARCH</h3>
+		</div>
+		<div id="insert_beg" onclick=implementInsertionAtBeginning()>
+			<h3>At the beginning</h3>
+		</div>
+		<div id="insert_end" onclick=implementInsertionAtEnd()>
+			<h3>At the end</h3>
+		</div>
+		<div id="insert_mid" onclick=implementInsertionAtMiddle()>
+			<h3>At the middle</h3>
+		</div>
+		<div id="delete_beg" onclick=implementDeletionAtBeginning()>
+			<h3>At the beginning</h3>
+		</div>
+		<div id="delete_end" onclick=implementDeletionAtEnd()>
+			<h3>At the end</h3>
+		</div>
+		<div id="delete_mid" onclick=implementDeletionAtMiddle()>
+			<h3>At the middle</h3>
+		</div>
+		<div id="dinsert_beg" onclick=implementDoubleInsertionAtBeginning()>
+			<h3>At the beginning</h3>
+		</div>
+		<div id="dinsert_end" onclick=implementDoubleInsertionAtEnd()>
+			<h3>At the end</h3>
+		</div>
+		<div id="dinsert_mid" onclick=implementDoubleInsertionAtMiddle()>
+			<h3>At the middle</h3>
+		</div>
+		<div id="ddelete_beg" onclick=implementDoubleDeletionAtBeginning()>
+			<h3>At the beginning</h3>
+		</div>
+		<div id="ddelete_end" onclick=implementDoubleDeletionAtEnd()>
+			<h3>At the end</h3>
+		</div>
+		<div id="ddelete_mid" onclick=implementDoubleDeletionAtMiddle()>
+			<h3>At the middle</h3>
+		</div>
+		<div id="result_sort">
+			<p id="info3_sort"></p>
+			<p id="info4_sort"></p>
+			<p id="info5_sort"></p>
+		</div>
+	</body>
+	<script type="text/javascript">
+
+		var canvas=document.getElementById("canvas");
+		var cir=canvas.getContext("2d");
+		var j,k,num=0,i,dist,ch=0,x,y,z=0,cost,nodecount=0,tot_swaps=0,tot_comparisions=0;
+		var depth=[],openlist=[],adjacency=[],parent=[],inqueue=[],visited=[],closedlist=[];
+		var root,goal,node,count=0,r,swap,min1,max1,mid1,first,last;
+		var number=[],number_copy=[],key;
+		var firstnode,secondnode,maxDepth,Depth,g,found;
+		var xcoordinates=[],ycoordinates=[];
+		var stack=[],queue=[];
+		var list= new List();
+		var list1= new List();
+		var list_stack= new List();
+		var list_queue= new List();
+		var tree= new List();
+		function loadPageTwoGraph()
+		{
+			document.getElementById('graphs').style.display="none";
+			document.getElementById('linked').style.display="none";
+			document.getElementById('stack').style.display="none";
+			document.getElementById('queue').style.display="none";
+			document.getElementById('info_main').style.display="none";
+			document.getElementById('sort').style.display="none";
+			document.getElementById('canvas').style.display="block";
+			document.getElementById('instr1').style.display="block";
+			document.getElementById('submitnode').style.display="block";
+			document.getElementById('info1').style.display="block";
+			document.getElementById('info2').style.display="block";
+			document.getElementById('info3').style.display="block";
+			document.getElementById('info4').style.display="block";
+			canvas.addEventListener("mousedown",getNodes,false);
+		}
+		function loadPageTwoLinked()
+		{
+			document.getElementById('graphs').style.display="none";
+			document.getElementById('linked').style.display="none";
+			document.getElementById('stack').style.display="none";
+			document.getElementById('queue').style.display="none";
+			document.getElementById('info_main').style.display="none";
+			document.getElementById('sort').style.display="none";
+			document.getElementById('canvas').style.display="block";
+			document.getElementById('instr_linked').style.display="block";
+			document.getElementById('single').style.display="block";
+			document.getElementById('double').style.display="block";
+		}
+		function implementSingle()
+		{
+			document.getElementById('single').style.display="none";
+			document.getElementById('double').style.display="none";
+			document.getElementById('single_insertion').style.display="block";
+			document.getElementById('single_deletion').style.display="block";
+			document.getElementById('info1_linked').style.fontSize="25px";
+			document.getElementById('info1_linked').innerHTML="Click on INSERTION for inserting into linked list.";
+			document.getElementById('info2_linked').style.fontSize="25px";
+			document.getElementById('info2_linked').innerHTML="Click on DELETION for deletion from linked list.";
+			x=50;
+			y=150;
+			num=0;
+			count=0;
+		}
+		function implementDouble()
+		{
+			document.getElementById('single').style.display="none";
+			document.getElementById('double').style.display="none";
+			document.getElementById('double_insertion').style.display="block";
+			document.getElementById('double_deletion').style.display="block";
+			document.getElementById('info1_linked').style.fontSize="25px";
+			document.getElementById('info1_linked').innerHTML="Click on INSERTION for inserting into linked list.";
+			document.getElementById('info2_linked').style.fontSize="25px";
+			document.getElementById('info2_linked').innerHTML="Click on DELETION for deletion from linked list.";
+			x=50;
+			y=150;
+			num=0;
+			count=0;
+		}
+		function implementSingleInsertion()
+		{
+			document.getElementById('insert_beg').style.display="block";
+			document.getElementById('insert_mid').style.display="block";
+			document.getElementById('insert_end').style.display="block";
+			document.getElementById('delete_beg').style.display="none";
+			document.getElementById('delete_mid').style.display="none";
+			document.getElementById('delete_end').style.display="none";
+		}
+		function implementDoubleInsertion()
+		{
+			document.getElementById('dinsert_beg').style.display="block";
+			document.getElementById('dinsert_mid').style.display="block";
+			document.getElementById('dinsert_end').style.display="block";
+			document.getElementById('ddelete_beg').style.display="none";
+			document.getElementById('ddelete_mid').style.display="none";
+			document.getElementById('ddelete_end').style.display="none";
+		}
+		function implementSingleDeletion()
+		{
+			document.getElementById('delete_beg').style.display="block";
+			document.getElementById('delete_mid').style.display="block";
+			document.getElementById('delete_end').style.display="block";
+			document.getElementById('insert_beg').style.display="none";
+			document.getElementById('insert_mid').style.display="none";
+			document.getElementById('insert_end').style.display="none";
+		}
+		function implementDoubleDeletion()
+		{
+			document.getElementById('ddelete_beg').style.display="block";
+			document.getElementById('ddelete_mid').style.display="block";
+			document.getElementById('ddelete_end').style.display="block";
+			document.getElementById('dinsert_beg').style.display="none";
+			document.getElementById('dinsert_mid').style.display="none";
+			document.getElementById('dinsert_end').style.display="none";
+		}
+		function List()
+		{
+			List.makeNode=function()
+			{
+				return{data:null,next:null};
+			};
+			List.makeNodeDouble=function()
+			{
+				return{data:null,next:null,prev:null};
+			}
+			this.start=null;
+			this.end=null;
+			this.temp=null;
+			this.temp1=null;
+			this.deleteAtBeginning=function()
+			{
+				this.temp=this.start;
+				this.start=this.start.next;
+				this.temp.next=null;
+				count--;
+				num--;
+				alert("Deleting "+stack[0]+" from the linked list.");
+				for(i=0;i<count;i++)
+					stack[i]=stack[i+1];
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-5);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]+5);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+			this.deleteAtBeginningDouble=function()
+			{
+				this.temp=this.start;
+				this.start=this.start.next;
+				this.start.prev=null;
+				this.temp.next=null;
+				count--;
+				num--;
+				alert("Deleting "+stack[0]+" from the linked list.");
+				for(i=0;i<count;i++)
+					stack[i]=stack[i+1];
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]-4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-7);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]-4);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]-1);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]+4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+7);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+1);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+			this.deleteAtEndDouble=function()
+			{
+				this.temp=this.start;
+				while(this.temp.next!=null)
+				{
+					this.temp1=this.temp;
+					this.temp=this.temp.next;	
+				}
+				this.temp1.next=null;
+				this.temp.prev=null;
+				this.end=this.temp1;
+				alert("Deleting "+stack[count-1]+" from the linked list.");
+				count--;
+				num--;
+				stack[count]=null;
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]-4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-7);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]-4);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]-1);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]+4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+7);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+1);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+			this.deleteAtEnd=function()
+			{
+				this.temp=this.start;
+				while(this.temp.next!=null)
+				{
+					this.temp1=this.temp;
+					this.temp=this.temp.next;	
+				}
+				this.temp=null;
+				this.end=this.temp1;
+				alert("Deleting "+stack[count-1]+" from the linked list.");
+				count--;
+				num--;
+				stack[count]=null;
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-5);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]+5);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+			this.deleteAtMiddle=function(pos)
+			{
+				this.temp=this.start;
+				i=0;
+				while(i<pos)
+				{
+					this.temp=this.temp.next;
+					i++;
+				}
+				this.temp1=this.temp.next;
+				this.temp.next=this.temp1.next;
+				this.temp1.next=null;
+				alert("Deleting "+stack[pos]+" from the linked list.");
+				count--;
+				num--;
+				stack[pos]=null;
+				for(i=pos;i<count;i++)
+					stack[i]=stack[i+1];	
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-5);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]+5);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+			this.deleteAtMiddleDouble=function(pos)
+			{
+				this.temp=this.start;
+				i=0;
+				while(i<pos)
+				{
+					this.temp=this.temp.next;
+					i++;
+				}
+				this.temp1=this.temp.next;
+				this.temp1=this.temp1.next;
+				this.temp.next.next=null;
+				this.temp.next.prev=null;
+				this.temp.next=this.temp1;
+				this.temp1.prev=this.temp;
+				alert("Deleting "+stack[pos]+" from the linked list.");
+				count--;
+				num--;
+				stack[pos]=null;
+				for(i=pos;i<count;i++)
+					stack[i]=stack[i+1];	
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]-4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-7);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]-4);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]-1);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]+4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+7);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+1);			
+						cir.stroke();
+						cir.closePath();	
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+			this.insertAtEndDouble=function(data)
+			{
+				if(this.start==null)
+				{
+					xcoordinates[count]=x;
+					ycoordinates[count]=y;
+					drawCircleBlack(x,y,20);
+					numberInsideCircle(x,y,data,-10);
+					this.start=List.makeNodeDouble();
+					this.end=this.start;
+				}
+				else
+				{
+					xcoordinates[count]=x;
+					ycoordinates[count]=y;
+					drawCircleBlack(x,y,20);
+					numberInsideCircle(x,y,data,-10);
+					cir.beginPath();
+					cir.strokeStyle='black';
+					cir.lineWidth = 2.5;							
+					cir.moveTo(xcoordinates[count-1]+20,ycoordinates[count-1]-4);
+					cir.lineTo(xcoordinates[count]-20,ycoordinates[count]-4);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]-30,ycoordinates[count]-7);
+					cir.lineTo(xcoordinates[count]-20,ycoordinates[count]-4);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]-20,ycoordinates[count]-4);
+					cir.lineTo(xcoordinates[count]-30,ycoordinates[count]-1);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]-20,ycoordinates[count]+4);
+					cir.lineTo(xcoordinates[count-1]+20,ycoordinates[count-1]+4);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count-1]+20,ycoordinates[count-1]+4);
+					cir.lineTo(xcoordinates[count-1]+30,ycoordinates[count-1]+7);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count-1]+20,ycoordinates[count-1]+4);
+					cir.lineTo(xcoordinates[count-1]+30,ycoordinates[count-1]+1);			
+					cir.stroke();
+					cir.closePath();
+					this.temp=List.makeNodeDouble();
+					this.temp.prev=this.end;
+					this.end.next=this.temp;
+					this.end=this.end.next;
+				}
+				this.end.data=data;
+				stack[count]=data;
+				count++;
+				x=x+100;
+			};
+			this.insertAtEnd=function(data)
+			{
+				if(this.start==null)
+				{
+					xcoordinates[count]=x;
+					ycoordinates[count]=y;
+					drawCircleBlack(x,y,20);
+					numberInsideCircle(x,y,data,-10);
+					this.start=List.makeNode();
+					this.end=this.start;
+				}
+				else
+				{
+					xcoordinates[count]=x;
+					ycoordinates[count]=y;
+					drawCircleBlack(x,y,20);
+					numberInsideCircle(x,y,data,-10);
+					cir.beginPath();
+					cir.strokeStyle='black';
+					cir.lineWidth = 2.5;							
+					cir.moveTo(xcoordinates[count-1]+20,ycoordinates[count-1]);
+					cir.lineTo(xcoordinates[count]-20,ycoordinates[count]);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]-30,ycoordinates[count]-5);
+					cir.lineTo(xcoordinates[count]-20,ycoordinates[count]);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]-20,ycoordinates[count]);
+					cir.lineTo(xcoordinates[count]-30,ycoordinates[count]+5);			
+					cir.stroke();
+					cir.closePath();
+					this.end.next=List.makeNode();
+					this.end=this.end.next;
+				}
+				this.end.data=data;
+				stack[count]=data;
+				count++;
+				x=x+100;
+			};
+			this.insertAtMiddleDouble=function(data,pos)
+			{
+				i=0;
+				xcoordinates[count]=parseInt((xcoordinates[pos]+xcoordinates[pos+1])/2);
+				ycoordinates[count]=250;
+				drawCircleBlack(xcoordinates[count],250,20);
+				numberInsideCircle(xcoordinates[count],250,data,-10);
+				cir.beginPath();
+				cir.strokeStyle='black';
+				cir.lineWidth = 3.0;							
+				cir.moveTo(xcoordinates[pos]+10,ycoordinates[pos]+15);
+				cir.lineTo(xcoordinates[count]-20,ycoordinates[count]-15);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[count]-20,ycoordinates[count]-15);
+				cir.lineTo(xcoordinates[count]-30,ycoordinates[count]-25);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[count]-20,ycoordinates[count]-15);
+				cir.lineTo(xcoordinates[count]-17,ycoordinates[count]-30);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos]+20,ycoordinates[pos]+15);
+				cir.lineTo(xcoordinates[count]-10,ycoordinates[count]-15);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos]+20,ycoordinates[pos]+15);
+				cir.lineTo(xcoordinates[pos]+17,ycoordinates[pos]+30);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos]+20,ycoordinates[pos]+15);
+				cir.lineTo(xcoordinates[pos]+30,ycoordinates[pos+1]+25);			
+				cir.stroke();
+
+				cir.moveTo(xcoordinates[pos+1]-20,ycoordinates[pos+1]+15);
+				cir.lineTo(xcoordinates[count]+10,ycoordinates[count]-15);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos+1]-20,ycoordinates[pos+1]+15);
+				cir.lineTo(xcoordinates[pos+1]-17,ycoordinates[pos+1]+30);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos+1]-20,ycoordinates[pos+1]+15);
+				cir.lineTo(xcoordinates[pos+1]-30,ycoordinates[pos+1]+25);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos+1]-10,ycoordinates[pos+1]+15);
+				cir.lineTo(xcoordinates[count]+20,ycoordinates[count]-15);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[count]+20,ycoordinates[count]-15);
+				cir.lineTo(xcoordinates[count]+17,ycoordinates[count]-30);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[count]+20,ycoordinates[count]-15);
+				cir.lineTo(xcoordinates[count]+30,ycoordinates[count]-25);			
+				cir.stroke();
+				for(i=0;i<10;i++)
+				{
+					cir.beginPath();
+					cir.strokeStyle='cornflowerblue';
+					cir.lineWidth = 2.5;													
+					cir.moveTo(xcoordinates[pos]+22,ycoordinates[pos]-4);
+					cir.lineTo(xcoordinates[pos+1]-22,ycoordinates[pos+1]-4);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[pos+1]-30,ycoordinates[pos+1]-7);
+					cir.lineTo(xcoordinates[pos+1]-22,ycoordinates[pos]-4);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[pos+1]-22,ycoordinates[pos+1]-4);
+					cir.lineTo(xcoordinates[pos+1]-30,ycoordinates[pos+1]-1);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[pos]+22,ycoordinates[pos]+4);
+					cir.lineTo(xcoordinates[pos+1]-22,ycoordinates[pos+1]+4);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[pos]+22,ycoordinates[pos]+4);
+					cir.lineTo(xcoordinates[pos]+30,ycoordinates[pos]+7);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[pos]+22,ycoordinates[pos]+4);
+					cir.lineTo(xcoordinates[pos]+30,ycoordinates[pos]+1);			
+					cir.stroke();
+					cir.closePath();
+				}
+				this.temp=this.start;
+				while(i<pos)
+				{
+					this.temp=this.temp.next;
+					i++;			
+				}
+				this.temp1=List.makeNode();
+				this.temp1.data=data;
+				count++;
+				for(i=count-1;i>pos+1;i--)
+					stack[i]=stack[i-1];
+				stack[i]=data;
+				this.temp1.prev=this.temp;
+				this.temp1.next=this.temp.next;
+				this.temp.next.prev=this.temp1;
+				this.temp.next=this.temp1;
+				alert("Readjusting the linked list.");
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]-4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-7);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]-4);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]-1);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]+4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+7);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+1);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}	
+			};
+			this.insertAtMiddle=function(data,pos)
+			{
+				i=0;
+				xcoordinates[count]=parseInt((xcoordinates[pos]+xcoordinates[pos+1])/2);
+				ycoordinates[count]=250;
+				drawCircleBlack(xcoordinates[count],250,20);
+				numberInsideCircle(xcoordinates[count],250,data,-10);
+				cir.beginPath();
+				cir.strokeStyle='black';
+				cir.lineWidth = 3.0;							
+				cir.moveTo(xcoordinates[pos]+15,ycoordinates[pos]+15);
+				cir.lineTo(xcoordinates[count]-15,ycoordinates[count]-15);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[count]-15,ycoordinates[count]-15);
+				cir.lineTo(xcoordinates[count]-25,ycoordinates[count]-25);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[count]-15,ycoordinates[count]-15);
+				cir.lineTo(xcoordinates[count]-12,ycoordinates[count]-30);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos+1]-15,ycoordinates[pos+1]+15);
+				cir.lineTo(xcoordinates[count]+15,ycoordinates[count]-15);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos+1]-15,ycoordinates[pos+1]+15);
+				cir.lineTo(xcoordinates[pos+1]-12,ycoordinates[pos+1]+30);			
+				cir.stroke();
+				cir.moveTo(xcoordinates[pos+1]-15,ycoordinates[pos+1]+15);
+				cir.lineTo(xcoordinates[pos+1]-25,ycoordinates[pos+1]+25);			
+				cir.stroke();
+				for(i=0;i<10;i++)
+				{
+					cir.beginPath();
+					cir.strokeStyle='cornflowerblue';
+					cir.lineWidth = 2.5;							
+					cir.moveTo(xcoordinates[pos]+22,ycoordinates[pos]);
+					cir.lineTo(xcoordinates[pos+1]-22,ycoordinates[pos+1]);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[pos+1]-23,ycoordinates[pos+1]-2);
+					cir.lineTo(xcoordinates[pos+1]-30,ycoordinates[pos+1]-5);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[pos+1]-23,ycoordinates[pos+1]+2);
+					cir.lineTo(xcoordinates[pos+1]-30,ycoordinates[pos+1]+5);			
+					cir.stroke();
+				}
+				this.temp=this.start;
+				while(i<pos)
+				{
+					this.temp=this.temp.next;
+					i++;			
+				}
+				this.temp1=List.makeNode();
+				this.temp1.data=data;
+				count++;
+				for(i=count-1;i>pos+1;i--)
+					stack[i]=stack[i-1];
+				stack[i]=data;
+				this.temp1.next=this.temp.next;
+				this.temp.next=this.temp1;
+				alert("Readjusting the linked list.");
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-5);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]+5);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}	
+			};
+			this.insertAtBeginningDouble=function(data)
+			{
+				if(this.start==null)
+				{
+					xcoordinates[count]=x;
+					ycoordinates[count]=y;
+					drawCircleBlack(x,y,20);
+					numberInsideCircle(x,y,data,-10);
+					this.start=List.makeNode();
+					this.start.data=data;
+					this.end=this.start;
+				}
+				else
+				{
+					xcoordinates[count]=50;
+					ycoordinates[count]=250;
+					drawCircleBlack(50,250,20);
+					numberInsideCircle(50,250,data,-10);
+					this.temp=List.makeNode;
+					this.temp.next=this.start;
+					this.start.prev=this.temp;
+					this.start=this.temp;
+					this.start.data=data;
+					cir.beginPath();
+					cir.strokeStyle='black';
+					cir.lineWidth = 2.5;
+					cir.moveTo(xcoordinates[count]-4,ycoordinates[count]-20);
+					cir.lineTo(xcoordinates[0]-4,ycoordinates[0]+20);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[0]-4,ycoordinates[0]+20);
+					cir.lineTo(xcoordinates[0]-7,ycoordinates[0]+30);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[0]-4,ycoordinates[0]+20);
+					cir.lineTo(xcoordinates[0]-1,ycoordinates[0]+30);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]+4,ycoordinates[count]-20);
+					cir.lineTo(xcoordinates[0]+4,ycoordinates[0]+20);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]+4,ycoordinates[count]-20);
+					cir.lineTo(xcoordinates[count]+1,ycoordinates[count]-30);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[count]+4,ycoordinates[count]-20);
+					cir.lineTo(xcoordinates[count]+7,ycoordinates[count]-30);			
+					cir.stroke();
+					cir.closePath();
+				}
+				count++;
+				for(i=count-1;i>0;i--)
+				{
+					stack[i]=stack[i-1];	
+				}
+				stack[i]=data;
+				alert("Readjusting the linked list.");
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]-4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-7);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]-4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]-4);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]-1);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]+4);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+7);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]+4);
+						cir.lineTo(xcoordinates[i-1]+30,ycoordinates[i-1]+1);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+			this.pushLinked=function(data)
+			{
+				if(this.start==null)
+				{
+					this.start=List.makeNode();
+					this.start.data=data;
+					this.end=this.start;
+					alert("Stack is empty.");
+				}
+				else
+				{
+					this.temp=List.makeNode();
+					this.temp.next=this.start;
+					alert(this.start.data+" is at the top currently.");
+					this.start=this.temp;
+					this.start.data=data;
+				}
+				cir.fillStyle='black';
+				cir.translate(x,y);
+				cir.font='bold 20px Arial';
+				cir.fillText(this.start.data,-5, 5);
+				cir.translate(-x,-y);
+				cir.beginPath();
+				cir.strokeStyle='black';							
+				cir.moveTo(400,(y-20));
+				cir.lineTo(600,(y-20));	
+				y-=40;
+				cir.stroke();
+				alert(data+" has been inserted into the top of the stack(at the beginning of the list).");
+			};
+			this.popLinked=function()
+			{
+				this.temp=this.start;
+				alert(this.start.data+" is at the top of stack currently.");
+				y+=40;
+				for(i=0;i<10;i++)
+				{
+					cir.beginPath();
+					cir.strokeStyle='cornflowerblue';							
+					cir.moveTo(401,(y-20));
+					cir.lineTo(599,(y-20));	
+					cir.stroke();
+					cir.fillStyle='cornflowerblue';
+					cir.translate(x,y);
+					cir.font='bold 20px Arial';
+					cir.fillText(this.start.data,-5, 5);
+					cir.translate(-x,-y);
+				}
+				alert(this.temp.data+" has been removed from the top of the stack(from the beginning of the list).");
+				this.start=this.start.next;
+				this.temp.next=null;	
+			};
+			this.enqueueLinked=function(data)
+			{
+				if(this.start==null)
+				{
+					this.start=List.makeNode();
+					this.end=this.start;
+					alert("Queue is empty.");
+				}
+				else
+				{
+					alert(this.end.data+" is at the rear end of the queue. Insertion at this end.");
+					this.end.next=List.makeNode();
+					this.end=this.end.next;
+				}
+				this.end.data=data;
+				cir.fillStyle='black';
+				cir.translate(x,y);
+				cir.font='bold 20px Arial';
+				cir.fillText(this.end.data,-5, 5);
+				cir.translate(-x,-y);
+				y-=40;
+				alert(this.end.data+" inserted into the queue.");
+				this.temp=this.start;
+			};
+			this.dequeueLinked=function()
+			{
+				y=450;
+				this.temp=this.start;
+				while(this.temp!=null)
+				{
+					for(i=0;i<10;i++)
+					{
+						cir.fillStyle='cornflowerblue';
+						cir.translate(x,y);
+						cir.font='bold 20px Arial';
+						cir.fillText(this.temp.data,-5, 5);
+						cir.translate(-x,-y);	
+					}
+					this.temp=this.temp.next;
+					y-=40;
+				}
+				this.temp=this.start;
+				this.start=this.start.next;
+				this.temp.next=null;
+				z=this.temp.data;
+				this.temp=this.start;
+				y=450;
+				while(this.temp!=null)
+				{
+					cir.fillStyle='black';
+					cir.translate(x,y);
+					cir.font='bold 20px Arial';
+					cir.fillText(this.temp.data,-5, 5);
+					cir.translate(-x,-y);		
+					y-=40;
+					this.temp=this.temp.next;
+				}
+				alert(z+" was removed from the front end of the queue.");
+			};
+			this.insertAtBeginning=function(data)
+			{
+				if(this.start==null)
+				{
+					xcoordinates[count]=x;
+					ycoordinates[count]=y;
+					drawCircleBlack(x,y,20);
+					numberInsideCircle(x,y,data,-10);
+					this.start=List.makeNode();
+					this.start.data=data;
+					this.end=this.start;
+				}
+				else
+				{	
+					xcoordinates[count]=50;
+					ycoordinates[count]=250;
+					drawCircleBlack(50,250,20);
+					numberInsideCircle(50,250,data,-10);
+					this.temp=List.makeNode;
+					this.temp.next=this.start;
+					this.start=this.temp;
+					this.start.data=data;
+					cir.beginPath();
+					cir.strokeStyle='black';
+					cir.lineWidth = 2.5;
+					cir.moveTo(xcoordinates[count],ycoordinates[count]-20);
+					cir.lineTo(xcoordinates[0],ycoordinates[0]+20);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[0],ycoordinates[0]+20);
+					cir.lineTo(xcoordinates[0]-5,ycoordinates[0]+30);			
+					cir.stroke();
+					cir.moveTo(xcoordinates[0],ycoordinates[0]+20);
+					cir.lineTo(xcoordinates[0]+5,ycoordinates[0]+30);			
+					cir.stroke();
+					cir.closePath();	
+				}
+				count++;
+				for(i=count-1;i>0;i--)
+				{
+					stack[i]=stack[i-1];	
+				}
+				stack[i]=data;
+				alert("Readjusting the linked list.");
+				cir.clearRect(0,0,canvas.width,canvas.height);
+				x=50;
+				y=150;
+				i=0;
+				while(i<count)
+				{
+					xcoordinates[i]=x;
+					ycoordinates[i]=y;
+					if(i!=0)
+					{
+						cir.beginPath();
+						cir.strokeStyle='black';
+						cir.lineWidth = 2.5;							
+						cir.moveTo(xcoordinates[i-1]+20,ycoordinates[i-1]);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-30,ycoordinates[i]-5);
+						cir.lineTo(xcoordinates[i]-20,ycoordinates[i]);			
+						cir.stroke();
+						cir.moveTo(xcoordinates[i]-20,ycoordinates[i]);
+						cir.lineTo(xcoordinates[i]-30,ycoordinates[i]+5);			
+						cir.stroke();
+						cir.closePath();
+					}
+					drawCircleBlack(xcoordinates[i],ycoordinates[i],20);
+					numberInsideCircle(xcoordinates[i],ycoordinates[i],stack[i],-10);
+					x=x+100;
+					i++;
+				}
+			};
+		}	
+		function implementDeletionAtBeginning()
+		{
+			document.getElementById('delete_beg').style.display="none";
+			document.getElementById('delete_mid').style.display="none";
+			document.getElementById('delete_end').style.display="none";
+			if(count>0)
+				list.deleteAtBeginning();
+			else
+				alert("Nothing to delete");
+		}	
+		function implementDeletionAtEnd()
+		{
+			document.getElementById('delete_beg').style.display="none";
+			document.getElementById('delete_mid').style.display="none";
+			document.getElementById('delete_end').style.display="none";
+			if(count>0)
+				list.deleteAtEnd();
+			else
+				alert("Nothing to delete");
+		}
+		function implementDeletionAtMiddle()
+		{
+			document.getElementById('delete_beg').style.display="none";
+			document.getElementById('delete_mid').style.display="none";
+			document.getElementById('delete_end').style.display="none";
+			if(count>0)
+			{
+				var pos;			
+				pos=prompt("Enter position where to delete from the linked list",1);
+				while(isNaN(pos) || pos==null || pos>count || pos<1)
+				{
+					pos=prompt("Enter a valid position to insert",1);
+				}
+				pos=parseInt(pos);
+				if(pos==1)
+					list.deleteAtBeginning();
+				else if(pos==count)
+					list.deleteAtEnd();
+				else
+					list.deleteAtMiddle(pos-1);
+			}
+			else
+				alert("Nothing to delete");
+		}
+		function implementInsertionAtBeginning()
+		{
+			document.getElementById('insert_beg').style.display="none";
+			document.getElementById('insert_mid').style.display="none";
+			document.getElementById('insert_end').style.display="none";
+			if(num<10)
+			{
+				var inp;
+				inp=prompt("Enter a number to insert into the linked list",1);
+				while(isNaN(inp) || inp==null)
+				{
+					inp=prompt("Enter a valid number to insert","1");
+				}
+				inp=parseInt(inp);			
+				num++;
+				list.insertAtBeginning(inp);
+			}
+			else
+				alert("Sorry screen limit. More nodes can't be added");
+		}
+		function implementInsertionAtMiddle()
+		{
+			document.getElementById('insert_beg').style.display="none";
+			document.getElementById('insert_mid').style.display="none";
+			document.getElementById('insert_end').style.display="none";
+			if(num<10)
+			{
+				var inp,pos;
+				inp=prompt("Enter a number to insert into the linked list",1);
+				while(isNaN(inp) || inp==null)
+				{
+					inp=prompt("Enter a valid number to insert","1");
+				}
+				inp=parseInt(inp);			
+				pos=prompt("Enter position where to insert into the linked list",1);
+				while(isNaN(pos) || pos==null || pos>count+2 || pos<0)
+				{
+					pos=prompt("Enter a valid position to insert","1");
+				}
+				pos=parseInt(pos);
+				num++;
+				if(pos==0)
+					list.insertAtBeginning(inp);
+				else if(pos==count+1)
+					list.insertAtEnd(inp);
+				else
+					list.insertAtMiddle(inp,pos-2);
+			}
+			else
+				alert("Sorry screen limit. More nodes can't be added");
+		}
+		function implementInsertionAtEnd()
+		{
+			document.getElementById('insert_beg').style.display="none";
+			document.getElementById('insert_mid').style.display="none";
+			document.getElementById('insert_end').style.display="none";
+			if(num<10)
+			{
+				var inp;
+				inp=prompt("Enter a number to insert into the linked list",1);
+				while(isNaN(inp) || inp==null)
+				{
+					inp=prompt("Enter a valid number to insert","1");
+				}
+				inp=parseInt(inp);		
+				num++;
+				list.insertAtEnd(inp);
+			}
+			else
+				alert("Sorry screen limit. More nodes can't be added");
+		}
+		function implementDoubleDeletionAtMiddle()
+		{
+			document.getElementById('ddelete_beg').style.display="none";
+			document.getElementById('ddelete_mid').style.display="none";
+			document.getElementById('ddelete_end').style.display="none";
+			if(count>0)
+			{
+				var pos;			
+				pos=prompt("Enter position where to delete from the linked list",1);
+				while(isNaN(pos) || pos==null || pos>count || pos<1)
+				{
+					pos=prompt("Enter a valid position to insert",1);
+				}
+				pos=parseInt(pos);
+				if(pos==1)
+					list1.deleteAtBeginningDouble();
+				else if(pos==count)
+					list1.deleteAtEndDouble();
+				else
+					list1.deleteAtMiddleDouble(pos-1);
+			}
+			else
+				alert("Nothing to delete");
+		}
+		function implementDoubleDeletionAtBeginning()
+		{
+			document.getElementById('ddelete_beg').style.display="none";
+			document.getElementById('ddelete_mid').style.display="none";
+			document.getElementById('ddelete_end').style.display="none";
+			if(count>0)
+				list1.deleteAtBeginningDouble();
+			else
+				alert("Nothing to delete");
+		}
+		function implementDoubleDeletionAtEnd()
+		{
+			document.getElementById('ddelete_beg').style.display="none";
+			document.getElementById('ddelete_mid').style.display="none";
+			document.getElementById('ddelete_end').style.display="none";
+			if(count>0)
+				list1.deleteAtEndDouble();
+			else
+				alert("Nothing to delete");
+		}
+		function implementDoubleInsertionAtMiddle()
+		{
+			document.getElementById('dinsert_beg').style.display="none";
+			document.getElementById('dinsert_mid').style.display="none";
+			document.getElementById('dinsert_end').style.display="none";
+			if(num<10)
+			{
+				var inp,pos;
+				inp=prompt("Enter a number to insert into the linked list",1);
+				while(isNaN(inp) || inp==null)
+				{
+					inp=prompt("Enter a valid number to insert","1");
+				}
+				inp=parseInt(inp);			
+				pos=prompt("Enter position where to insert into the linked list",1);
+				while(isNaN(pos) || pos==null || pos>count+2 || pos<0)
+				{
+					pos=prompt("Enter a valid position to insert","1");
+				}
+				pos=parseInt(pos);
+				num++;
+				if(pos==0)
+					list1.insertAtBeginningDouble(inp);
+				else if(pos==count+1)
+					list1.insertAtEndDouble(inp);
+				else
+					list1.insertAtMiddleDouble(inp,pos-2);
+			}
+			else
+				alert("Sorry screen limit. More nodes can't be added");
+		}
+		function implementDoubleInsertionAtEnd()
+		{
+			document.getElementById('dinsert_beg').style.display="none";
+			document.getElementById('dinsert_mid').style.display="none";
+			document.getElementById('dinsert_end').style.display="none";
+			if(num<10)
+			{
+				var inp;
+				inp=prompt("Enter a number to insert into the linked list",1);
+				while(isNaN(inp) || inp==null)
+				{
+					inp=prompt("Enter a valid number to insert","1");
+				}
+				inp=parseInt(inp);		
+				num++;
+				list1.insertAtEndDouble(inp);
+			}
+			else
+				alert("Sorry screen limit. More nodes can't be added");
+		}
+		function implementDoubleInsertionAtBeginning()
+		{
+			document.getElementById('dinsert_beg').style.display="none";
+			document.getElementById('dinsert_mid').style.display="none";
+			document.getElementById('dinsert_end').style.display="none";
+			if(num<10)
+			{
+				var inp;
+				inp=prompt("Enter a number to insert into the linked list",1);
+				while(isNaN(inp) || inp==null)
+				{
+					inp=prompt("Enter a valid number to insert","1");
+				}
+				inp=parseInt(inp);			
+				num++;
+				list1.insertAtBeginningDouble(inp);
+			}
+			else
+				alert("Sorry screen limit. More nodes can't be added");
+		}
+		function loadPageTwoSort()
+		{
+			document.getElementById('graphs').style.display="none";
+			document.getElementById('linked').style.display="none";
+			document.getElementById('stack').style.display="none";
+			document.getElementById('queue').style.display="none";
+			document.getElementById('info_main').style.display="none";
+			document.getElementById('sort').style.display="none";
+			document.getElementById('canvas').style.display="block";
+			document.getElementById('instr_sort').style.display="block";
+			document.getElementById('insert_sort').style.display="block";
+			document.getElementById('proceed_sort').style.display="block";
+			x=50;
+			y=100;
+			count=0;
+			num=0;
+		}
+		function loadPageTwoStack()
+		{
+			document.getElementById('graphs').style.display="none";
+			document.getElementById('linked').style.display="none";
+			document.getElementById('stack').style.display="none";
+			document.getElementById('queue').style.display="none";
+			document.getElementById('info_main').style.display="none";
+			document.getElementById('sort').style.display="none";
+			document.getElementById('canvas').style.display="block";
+			document.getElementById('stack_array').style.display="block";
+			document.getElementById('stack_linked').style.display="block";
+		}
+		function loadPageTwoQueue()
+		{
+			document.getElementById('graphs').style.display="none";
+			document.getElementById('linked').style.display="none";
+			document.getElementById('stack').style.display="none";
+			document.getElementById('queue').style.display="none";
+			document.getElementById('info_main').style.display="none";
+			document.getElementById('sort').style.display="none";
+			document.getElementById('canvas').style.display="block";
+			document.getElementById('queue_array').style.display="block";
+			document.getElementById('queue_linked').style.display="block";
+		}
+		function createStackUsingArray()
+		{
+			document.getElementById('instr_stack').style.display="block";
+			document.getElementById('stack_array').style.display="none";
+			document.getElementById('stack_linked').style.display="none";
+			document.getElementById('push_stack').style.display="block";
+			document.getElementById('pop_stack').style.display="block";
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(400,20);
+			cir.lineTo(400,470);			
+			cir.stroke();	
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(400,470);
+			cir.lineTo(600,470);			
+			cir.stroke();
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(600,470);
+			cir.lineTo(600,20);			
+			cir.stroke();
+			count=0;
+			x=490;
+			y=450;
+			ch=0;
+		}
+		function createStackUsingLinked()
+		{
+			document.getElementById('instr_stack').style.display="block";
+			document.getElementById('stack_array').style.display="none";
+			document.getElementById('stack_linked').style.display="none";
+			document.getElementById('push_stack').style.display="block";
+			document.getElementById('pop_stack').style.display="block";
+			ch=1;
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(400,20);
+			cir.lineTo(400,470);			
+			cir.stroke();	
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(400,470);
+			cir.lineTo(600,470);			
+			cir.stroke();
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(600,470);
+			cir.lineTo(600,20);			
+			cir.stroke();
+			count=0;
+			x=490;
+			y=450;
+		}
+		function createQueueUsingLinked()
+		{
+			document.getElementById('instr_queue').style.display="block";
+			document.getElementById('queue_array').style.display="none";
+			document.getElementById('queue_linked').style.display="none";
+			document.getElementById('enqueue_queue').style.display="block";
+			document.getElementById('dequeue_queue').style.display="block";
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(400,20);
+			cir.lineTo(400,480);			
+			cir.stroke();	
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(600,480);
+			cir.lineTo(600,20);			
+			cir.stroke();
+			for(i=10;i<=490;i=i+40)
+			{
+				cir.beginPath();
+				cir.strokeStyle='black';							
+				cir.moveTo(400,480-i);
+				cir.lineTo(600,480-i);			
+				cir.stroke();
+			}
+			count=0;
+			x=490;
+			y=450;
+			ch=1;
+		}
+		function createQueueUsingArray()
+		{
+			document.getElementById('instr_queue').style.display="block";
+			document.getElementById('queue_array').style.display="none";
+			document.getElementById('queue_linked').style.display="none";
+			document.getElementById('enqueue_queue').style.display="block";
+			document.getElementById('dequeue_queue').style.display="block";
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(400,20);
+			cir.lineTo(400,480);			
+			cir.stroke();	
+			cir.beginPath();
+			cir.strokeStyle='black';							
+			cir.moveTo(600,480);
+			cir.lineTo(600,20);			
+			cir.stroke();
+			for(i=10;i<=490;i=i+40)
+			{
+				cir.beginPath();
+				cir.strokeStyle='black';							
+				cir.moveTo(400,480-i);
+				cir.lineTo(600,480-i);			
+				cir.stroke();
+			}
+			count=0;
+			x=490;
+			y=450;
+			ch=0;
+		}
+		function pushIntoStack()
+		{
+			if(ch==0)
+			{
+				if(count<11)
+				{
+					var value=null;
+					value=prompt("Enter number to be pushed into the stack");
+					if(value==null || isNaN(value))
+					{
+						do
+						{
+							value=prompt("Enter an appropriate number");
+						}while(value==null || isNaN(value));
+					}
+					value=parseInt(value);
+					stack.push(value);
+					cir.fillStyle='black';
+					cir.translate(x,y);
+					cir.font='bold 20px Arial';
+					cir.fillText(stack[count].toString(),-5, 5);
+					cir.translate(-x,-y);
+					cir.beginPath();
+					cir.strokeStyle='black';							
+					cir.moveTo(400,(y-20));
+					cir.lineTo(600,(y-20));	
+					y-=40;
+					cir.stroke();
+					count++;	
+				}	
+				else
+						alert("Stack is full");
+			}
+			else
+			{
+				if(count<11)
+				{
+					var value=null;
+					value=prompt("Enter number to be pushed into the stack");
+					if(value==null || isNaN(value))
+					{
+						do
+						{
+							value=prompt("Enter an appropriate number");
+						}while(value==null || isNaN(value));
+					}
+					value=parseInt(value);	
+					list_stack.pushLinked(value);
+					count++;
+				}
+				else
+				{
+					alert("Sorry. Due to screen size limit, more data can't be entered into stack");
+				}
+			}
+		}
+		function enqueueIntoQueue()
+		{
+			if(ch==0)
+			{
+				if(count<11)
+				{
+					var value=null;
+					value=prompt("Enter number to be inserted into the queue");
+					if(value==null || isNaN(value))
+					{
+						do
+						{
+							value=prompt("Enter an appropriate number");
+						}while(value==null || isNaN(value));
+					}
+					value=parseInt(value);
+					queue.push(value);
+					cir.fillStyle='black';
+					cir.translate(x,y);
+					cir.font='bold 20px Arial';
+					cir.fillText(queue[count].toString(),-5, 5);
+					cir.translate(-x,-y);
+					y-=40;
+					count++;	
+				}	
+				else
+					alert("Queue is full");
+			}
+			else
+			{
+				if(count<11)
+				{
+					var value=null;
+					value=prompt("Enter number to be inserted into the queue");
+					if(value==null || isNaN(value))
+					{
+						do
+						{
+							value=prompt("Enter an appropriate number");
+						}while(value==null || isNaN(value));
+					}
+					value=parseInt(value);
+					list_queue.enqueueLinked(value);
+					count++;
+				}
+				else
+					alert("Sorry. Due to screen size limit, more data can't be entered into stack");					
+			}
+		}
+		function popFromStack()
+		{
+			if(ch==0)
+			{
+				if(count>0)
+				{
+					value=stack.pop();
+					y+=40;
+					count--;
+					for(i=0;i<10;i++)
+					{
+						cir.beginPath();
+						cir.strokeStyle='cornflowerblue';							
+						cir.moveTo(401,(y-20));
+						cir.lineTo(599,(y-20));	
+						cir.stroke();
+						cir.fillStyle='cornflowerblue';
+						cir.translate(x,y);
+						cir.font='bold 20px Arial';
+						cir.fillText(value.toString(),-5, 5);
+						cir.translate(-x,-y);
+					}	
+				}
+				else
+					alert("Stack is already empty");
+			}
+			else
+			{
+				if(count>0)
+				{
+					list_stack.popLinked();
+					count--;
+				}
+				else
+					alert("Nothing to pop");
+			}
+		}	
+		function dequeueFromQueue()
+		{
+			if(ch==0)
+			{
+				if(count>0)
+				{
+					for(i=count-1;i>=0;i--)
+					{
+						y+=40;
+						for(j=0;j<10;j++)
+						{
+							cir.fillStyle='cornflowerblue';
+							cir.translate(x,y);
+							cir.font='bold 20px Arial';
+							cir.fillText(queue[i].toString(),-5, 5);
+							cir.translate(-x,-y);	
+						}
+					}
+					value=queue.shift();
+					count--;
+					for(i=0;i<count;i++)
+					{
+						cir.fillStyle='black';
+						cir.translate(x,y);
+						cir.font='bold 20px Arial';
+						cir.fillText(queue[i].toString(),-5, 5);
+						cir.translate(-x,-y);		
+						y-=40;
+					}
+				}
+				else
+					alert("Queue is already empty");
+			}
+			else
+			{
+				if(count>0)
+				{
+					list_queue.dequeueLinked();
+					count--;
+				}
+				else
+					alert("Nothing to dequeue.");
+			}
+		}
+		function insertNumberForSorting()
+		{
+			xcoordinates[count]=x;
+			ycoordinates[count]=y;
+			drawCircleBlack(x,y,40);
+			number[count]=null;
+			number[count]=prompt("Enter number to be inserted into the array");
+			if(number[count]==null || isNaN(number[count]))
+			{
+				do
+				{
+					number[count]=prompt("Enter an appropriate number");
+				}while(number[count]==null || isNaN(number[count]));
+			}
+			number[count]=parseInt(number[count]);
+			number_copy[count]=number[count];
+			numberInsideCircle(x,y,number[count],-27);			
+			count++;
+			num++;
+			if(num<11)
+				x=x+90;
+			else
+			{
+				x=50;
+				y+=100;
+				num=0;
+			}
+		}
+		function proceedToSorting()
+		{
+			document.getElementById('instr_sort').style.display="none";
+			document.getElementById('insert_sort').style.display="none";
+			document.getElementById('proceed_sort').style.display="none";	
+			document.getElementById('sort_menu').style.display="block";
+			document.getElementById('search_menu').style.display="block";
+			document.getElementById('result_sort').style.display="block";
+		}
+		function selectSortingAlgorithm()
+		{
+			document.getElementById('bubble_sort').style.display="block";
+			document.getElementById('insertion_sort').style.display="block";
+			document.getElementById('selection_sort').style.display="block";
+			document.getElementById('merge_sort').style.display="block";
+			document.getElementById('quick_sort').style.display="block";
+			document.getElementById('heap_sort').style.display="block";
+			document.getElementById('linear_search').style.display="none";
+			document.getElementById('binary_search').style.display="none";
+		}
+		function selectSearchingAlgorithm()
+		{
+			document.getElementById('linear_search').style.display="block";
+			document.getElementById('binary_search').style.display="block";
+			document.getElementById('bubble_sort').style.display="none";
+			document.getElementById('insertion_sort').style.display="none";
+			document.getElementById('selection_sort').style.display="none";
+			document.getElementById('merge_sort').style.display="none";
+			document.getElementById('quick_sort').style.display="none";
+			document.getElementById('heap_sort').style.display="none";
+		}
+		function implementHeapSort()
+		{
+			var c,r,temp;
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			tot_swaps=0;
+			tot_comparisions=0;
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Heap Sort.";
+			document.getElementById('bubble_sort').style.display="none";
+			document.getElementById('insertion_sort').style.display="none";
+			document.getElementById('selection_sort').style.display="none";
+			document.getElementById('merge_sort').style.display="none";
+			document.getElementById('quick_sort').style.display="none";
+			document.getElementById('heap_sort').style.display="none";
+			alert("Generating max heap tree.");
+			for(i=1;i<count;i++)
+			{
+				c=i;
+				do
+				{
+					r=parseInt((c-1)/2);
+					for(k=0;k<count;k++)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+						cir.lineWidth = 3.5;
+						if(k==r || k==c)
+							cir.strokeStyle = 'red';
+						else	
+							cir.strokeStyle = 'black';						
+						cir.stroke();
+					}
+					alert("Comparing "+number[c]+" with its predecessor node.");
+					if(number[r]<number[c])
+					{
+						temp=number[r];
+						number[r]=number[c];
+						number[c]=temp;
+						for(k=0;k<count;k++)
+						{
+							cir.beginPath();
+							cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+							cir.fillStyle = 'green';						
+							cir.fill();
+							cir.lineWidth = 3.5;		
+							cir.strokeStyle = 'black';						
+							cir.stroke();
+							cir.fillStyle = 'black';
+							cir.translate(xcoordinates[k], ycoordinates[k]);	
+							cir.font = 'bold 20px Arial';						
+							cir.fillText(number[k].toString(), -27, 5);				
+							cir.translate(-xcoordinates[k],-ycoordinates[k]);
+						}
+						alert("Swapping "+number[r]+" and "+number[c]);
+					}
+					c=r;
+				}while(c!=0);
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			alert("Max heap array is: "+number);
+			for(j=count-1;j>=0;j--)
+			{
+				temp=number[0];
+				number[0]=number[j];
+				number[j]=temp;
+				r=0;
+				tot_swaps++;
+				document.getElementById('info5_sort').style.fontSize="20px";
+				document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+				for(k=0;k<count;k++)
+				{
+					cir.beginPath();
+					cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+					cir.fillStyle = 'green';						
+					cir.fill();
+					cir.lineWidth = 3.5;
+					if(k==r || k==j)
+						cir.strokeStyle = 'red';
+					else	
+						cir.strokeStyle = 'black';						
+					cir.stroke();
+					cir.fillStyle = 'black';
+					cir.translate(xcoordinates[k], ycoordinates[k]);	
+					cir.font = 'bold 20px Arial';						
+					cir.fillText(number[k].toString(), -27, 5);				
+					cir.translate(-xcoordinates[k],-ycoordinates[k]);
+				}
+				alert(number[r]+" swapped with "+number[j]);
+				do
+				{
+					c=2*r+1;
+					if(c<j-1)
+					{
+						tot_comparisions++;
+						alert("Comparing "+number[c]+" with "+number[c+1]);
+					}
+					if((number[c]<number[c+1]) && c<j-1)
+					{
+						document.getElementById('info4_sort').style.fontSize="20px";
+						document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+						for(k=0;k<count;k++)
+						{
+							cir.beginPath();
+							cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+							cir.lineWidth = 3.5;
+							if(k==c || k==c+1)
+								cir.strokeStyle = 'red';
+							else	
+								cir.strokeStyle = 'black';						
+							cir.stroke();
+						}	
+						c++;
+					}
+					if(c<j)
+					{
+						tot_comparisions++;
+						alert("Comparing "+number[r]+" with "+number[c]);
+					}
+					if(number[r]<number[c] && c<j)
+					{
+						tot_comparisions++;
+						tot_swaps++;
+						document.getElementById('info5_sort').style.fontSize="20px";
+						document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+						temp=number[r];
+						number[r]=number[c];
+						number[c]=temp;
+						for(k=0;k<count;k++)
+						{
+							cir.beginPath();
+							cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+							cir.fillStyle = 'green';						
+							cir.fill();
+							cir.lineWidth = 3.5;
+							if(k==r || k==c)
+								cir.strokeStyle = 'red';
+							else	
+								cir.strokeStyle = 'black';						
+							cir.stroke();
+							cir.fillStyle = 'black';
+							cir.translate(xcoordinates[k], ycoordinates[k]);	
+							cir.font = 'bold 20px Arial';						
+							cir.fillText(number[k].toString(), -27, 5);				
+							cir.translate(-xcoordinates[k],-ycoordinates[k]);
+						}
+						alert("Swapping "+number[r]+" with "+number[c]);
+					}
+					r=c;
+				}while(c<j);
+			}
+			document.getElementById('info3_sort').innerHTML="Performed Heap Sort.";
+			document.getElementById('info4_sort').style.fontSize="20px";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			document.getElementById('info5_sort').style.fontSize="20px";
+			document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle= 'green';
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			alert("Heap Sorting completed.");
+		}
+		function implementQuickSort()
+		{
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			tot_swaps=0;
+			tot_comparisions=0;
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Quick Sort.";
+			document.getElementById('bubble_sort').style.display="none";
+			document.getElementById('insertion_sort').style.display="none";
+			document.getElementById('selection_sort').style.display="none";
+			document.getElementById('merge_sort').style.display="none";
+			document.getElementById('quick_sort').style.display="none";
+			document.getElementById('heap_sort').style.display="none";
+			quicksort(0,count-1);
+			document.getElementById('info3_sort').innerHTML="Performed Quick Sort.";
+			document.getElementById('info4_sort').style.fontSize="20px";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			document.getElementById('info5_sort').style.fontSize="20px";
+			document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle= 'green';
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			alert("Quick Sorting completed.");
+		}
+		function quicksort(first, last)
+		{
+			var pivot=first,temp,k;
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				if(k==pivot)
+					cir.fillStyle = 'yellow';						
+				else
+					cir.fillStyle= 'green';
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			alert("Pivot for this iteration is "+number[pivot]);
+			if(first<last)
+			{
+				i=first;
+				j=last;
+				while(i<j)
+				{
+					while(number[i]<=number[pivot] && i<last)
+					{
+						tot_comparisions++;
+						document.getElementById('info4_sort').style.fontSize="20px";
+						document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+						for(k=0;k<count;k++)
+						{
+							cir.beginPath();
+							cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+							if(k==pivot)
+								cir.fillStyle = 'yellow';						
+							else
+								cir.fillStyle= 'green';
+							cir.fill();
+							cir.lineWidth = 3.5;
+							if(k==i||k==pivot)
+								cir.strokeStyle='red';
+							else
+								cir.strokeStyle = 'black';						
+							cir.stroke();
+							cir.fillStyle = 'black';
+							cir.translate(xcoordinates[k], ycoordinates[k]);	
+							cir.font = 'bold 20px Arial';						
+							cir.fillText(number[k].toString(), -27, 5);				
+							cir.translate(-xcoordinates[k],-ycoordinates[k]);
+						}
+						alert("Comparing "+number[i]+" and "+number[pivot]);
+						i++;
+					}
+					tot_comparisions++;
+					document.getElementById('info4_sort').style.fontSize="20px";
+					document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+					for(k=0;k<count;k++)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+						cir.lineWidth = 3.5;
+						if(k==i||k==pivot)
+							cir.strokeStyle='red';
+						else
+							cir.strokeStyle = 'black';						
+						cir.stroke();
+					}
+					alert("Comparing "+number[i]+" and "+number[pivot]+"\n "+number[i]+" > "+number[pivot]+" \n Now comparing from other end.");
+					while(number[j]>number[pivot])
+					{
+						for(k=0;k<count;k++)
+						{
+							cir.beginPath();
+							cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+							if(k==pivot)
+								cir.fillStyle = 'yellow';						
+							else
+								cir.fillStyle= 'green';
+							cir.fill();
+							cir.lineWidth = 3.5;
+							if(k==j||k==pivot)
+								cir.strokeStyle='red';
+							else
+								cir.strokeStyle = 'black';						
+							cir.stroke();
+							cir.fillStyle = 'black';
+							cir.translate(xcoordinates[k], ycoordinates[k]);	
+							cir.font = 'bold 20px Arial';						
+							cir.fillText(number[k].toString(), -27, 5);				
+							cir.translate(-xcoordinates[k],-ycoordinates[k]);
+						}
+						tot_comparisions++;
+						document.getElementById('info4_sort').style.fontSize="20px";
+						document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+						alert("Comparing "+number[j]+" and "+number[pivot]);
+						j--;
+					}
+					tot_comparisions++;
+					document.getElementById('info4_sort').style.fontSize="20px";
+					document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+					for(k=0;k<count;k++)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+						cir.lineWidth = 3.5;
+						if(k==j||k==pivot)
+							cir.strokeStyle='red';
+						else
+							cir.strokeStyle = 'black';						
+						cir.stroke();
+					}
+					alert("Comparing "+number[j]+" and "+number[pivot]+"\n "+number[j]+" <= "+number[pivot]);
+					if(i<j)
+					{
+						tot_swaps++;
+						document.getElementById('info5_sort').style.fontSize="20px";
+						document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+						for(k=0;k<count;k++)
+						{
+							cir.beginPath();
+							cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+							cir.lineWidth = 3.5;
+							if(k==i||k==j)
+								cir.strokeStyle='red';
+							else
+								cir.strokeStyle = 'black';						
+							cir.stroke();
+						}
+						alert("Swapping "+number[i]+" and "+number[j]);
+						temp=number[i];
+						number[i]=number[j];
+						number[j]=temp;
+					}
+				}
+				tot_swaps++;
+				document.getElementById('info5_sort').style.fontSize="20px";
+				document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+				for(k=0;k<count;k++)
+				{
+					cir.beginPath();
+					cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+					cir.lineWidth = 3.5;
+					if(k==j||k==pivot)
+						cir.strokeStyle='red';
+					else
+						cir.strokeStyle = 'black';						
+					cir.stroke();
+				}
+				alert("Swapping "+number[j]+" and "+number[pivot]);
+				temp=number[pivot];
+				number[pivot]=number[j];
+				number[j]=temp;
+				quicksort(first,j-1);
+				quicksort(j+1,last);
+			}	
+		}
+		function implementMergeSort()
+		{	
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			tot_swaps=0;
+			tot_comparisions=0;
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Merge Sort.";
+			document.getElementById('bubble_sort').style.display="none";
+			document.getElementById('insertion_sort').style.display="none";
+			document.getElementById('selection_sort').style.display="none";
+			document.getElementById('merge_sort').style.display="none";
+			document.getElementById('quick_sort').style.display="none";
+			document.getElementById('heap_sort').style.display="none";
+			part(0,count-1);
+			document.getElementById('info3_sort').innerHTML="Performed Merge Sort.";
+			document.getElementById('info4_sort').style.fontSize="20px";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			document.getElementById('info5_sort').style.fontSize="20px";
+			document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+			alert("Merge Sorting completed.");
+		}
+		function part(min,max)
+		{
+			var mid;
+			if(min<max)
+			{
+				mid=parseInt((min+max)/2);
+				if(z++==0)
+				{
+					min1=min;
+					max1=max;
+					mid1=mid;
+					for(k=0;k<count;k++)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+						if(k>=min && k<=mid)
+							cir.fillStyle = 'yellow';						
+						else
+							cir.fillStyle = 'white';
+						cir.fill();
+						cir.lineWidth = 3.5;
+						cir.strokeStyle = 'black';						
+						cir.stroke();
+						cir.fillStyle = 'black';
+						cir.translate(xcoordinates[k], ycoordinates[k]);	
+						cir.font = 'bold 20px Arial';						
+						cir.fillText(number[k].toString(), -27, 5);				
+						cir.translate(-xcoordinates[k],-ycoordinates[k]);
+					}	
+					alert("Partitioning the array.");
+				}
+				part(min,mid);
+				part(mid+1,max);
+				merge(min,mid,max);
+			}
+		}
+		function merge(min,mid,max)
+		{
+			var tmp=[];
+			var i,j,k,l,m;
+			j=min;
+			m=mid+1;
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				if(k>=min1 && k<=mid1)
+					cir.fillStyle = 'yellow';						
+				else
+					cir.fillStyle = 'white';
+				cir.fill();
+				cir.lineWidth = 3.5;
+				if(k>=min && k<=max)
+					cir.strokeStyle='red';
+				else
+					cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			for(i=min;j<=mid && m<=max; i++)
+			{
+				tot_comparisions++;	
+				document.getElementById('info4_sort').style.fontSize="20px";
+				document.getElementById('info4_sort').innerHTML="Comparing "+number[j]+" with "+number[m]+".";
+				alert("Comparing "+number[j]+" with "+number[m]);
+				if(number[j]<=number[m])
+				{
+					tmp[i]=number[j];
+					//tot_swaps++;
+					document.getElementById('info5_sort').style.fontSize="20px";
+					//document.getElementById('info5_sort').innerHTML="Adjusting "+number[m]+" with respect to "+number[j]+".";
+					//alert("Adjusting "+number[j]+" with respect to "+number[m]);
+					j++;
+				}
+				else
+				{
+					tot_swaps++;
+					tmp[i]=number[m];
+					document.getElementById('info5_sort').style.fontSize="20px";
+					document.getElementById('info5_sort').innerHTML="Adjusting "+number[j]+" with respect to "+number[m]+".";
+					alert("Adjusting "+number[j]+" with respect to "+number[m]);
+					m++;
+				}
+			}
+			if(j>mid)
+			{
+				for(k=m;k<=max;k++)
+				{
+					tmp[i]=number[k];
+					i++;
+				}
+			}
+			else
+			{
+				for(k=j;k<=mid;k++)
+				{
+					tmp[i]=number[k];
+					i++;
+				}
+			}
+			for(k=min; k<=max; k++)
+				number[k]=tmp[k];
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+		}
+		function implementBubbleSort()
+		{
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			tot_swaps=0;
+			tot_comparisions=0;
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Bubble Sort.";
+			document.getElementById('bubble_sort').style.display="none";
+			document.getElementById('insertion_sort').style.display="none";
+			document.getElementById('selection_sort').style.display="none";
+			document.getElementById('merge_sort').style.display="none";
+			document.getElementById('quick_sort').style.display="none";
+			document.getElementById('heap_sort').style.display="none";
+			var temp;
+			for(i=0;i<count;i++)
+			{
+				alert("Iteration no: "+(i+1));
+				swap=0;
+				for(j=0;j<count-i-1;j++)
+				{
+					for(k=0;k<count;k++)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+						cir.fillStyle = 'green';						
+						cir.fill();
+						cir.lineWidth = 3.5;
+						if(k==j || k==(j+1))
+							cir.strokeStyle='red';
+						else
+							cir.strokeStyle = 'black';						
+						cir.stroke();
+						cir.fillStyle = 'black';
+						cir.translate(xcoordinates[k], ycoordinates[k]);	
+						cir.font = 'bold 20px Arial';						
+						cir.fillText(number[k].toString(), -27, 5);				
+						cir.translate(-xcoordinates[k],-ycoordinates[k]);
+					}
+					tot_comparisions++;	
+					document.getElementById('info4_sort').style.fontSize="20px";
+					document.getElementById('info4_sort').innerHTML="Comparing "+number[j]+" with "+number[j+1]+".";
+					alert("Comparing "+number[j]+" with "+number[j+1]);
+					if(number[j]>number[j+1])
+					{
+						temp=number[j];
+						number[j]=number[j+1];
+						number[j+1]=temp;
+						swap=1;						
+						document.getElementById('info5_sort').style.fontSize="20px";
+						document.getElementById('info5_sort').innerHTML="Swapped "+number[j+1]+" with "+number[j]+".";
+						tot_swaps++;
+					}
+					if(swap==1)
+					{
+						swap=0;
+						alert("Swapped "+number[j]+" with "+number[j+1]);
+					}
+				}
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			document.getElementById('info3_sort').innerHTML="Performed Bubble Sort.";
+			document.getElementById('info4_sort').style.fontSize="20px";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			document.getElementById('info5_sort').style.fontSize="20px";
+			document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+			alert("Bubble Sorting completed.");
+		}
+		function implementSelectionSort()
+		{
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			tot_swaps=0;
+			tot_comparisions=0;
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Selection Sort.";
+			document.getElementById('bubble_sort').style.display="none";
+			document.getElementById('insertion_sort').style.display="none";
+			document.getElementById('selection_sort').style.display="none";
+			document.getElementById('merge_sort').style.display="none";
+			document.getElementById('quick_sort').style.display="none";
+			document.getElementById('heap_sort').style.display="none";
+			var temp;
+			for(i=0;i<count;i++)
+			{
+				alert("Iteration no: "+(i+1));
+				swap=0;
+				for(j=i+1;j<count;j++)
+				{
+					for(k=0;k<count;k++)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+						cir.fillStyle = 'green';						
+						cir.fill();
+						cir.lineWidth = 3.5;
+						if(k==i || k==(j))
+							cir.strokeStyle='red';
+						else
+							cir.strokeStyle = 'black';						
+						cir.stroke();
+						cir.fillStyle = 'black';
+						cir.translate(xcoordinates[k], ycoordinates[k]);	
+						cir.font = 'bold 20px Arial';						
+						cir.fillText(number[k].toString(), -27, 5);				
+						cir.translate(-xcoordinates[k],-ycoordinates[k]);
+					}
+					tot_comparisions++;	
+					document.getElementById('info4_sort').style.fontSize="20px";
+					document.getElementById('info4_sort').innerHTML="Comparing "+number[i]+" with "+number[j]+".";
+					alert("Comparing "+number[i]+" with "+number[j]);
+					if(number[i]>number[j])
+					{
+						temp=number[i];
+						number[i]=number[j];
+						number[j]=temp;
+						swap=1;						
+						document.getElementById('info5_sort').style.fontSize="20px";
+						document.getElementById('info5_sort').innerHTML="Swapped "+number[j]+" with "+number[i]+".";
+						tot_swaps++;
+					}
+					if(swap==1)
+					{
+						swap=0;
+						alert("Swapped "+number[j]+" with "+number[i]);
+					}
+				}
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}	
+			document.getElementById('info3_sort').innerHTML="Performed Selection Sort.";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			document.getElementById('info5_sort').style.fontSize="20px";
+			document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+			alert("Selection Sorting completed.");
+		}
+		function implementInsertionSort()
+		{
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}
+			tot_swaps=0;
+			tot_comparisions=0;
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Insertion Sort.";
+			document.getElementById('bubble_sort').style.display="none";
+			document.getElementById('insertion_sort').style.display="none";
+			document.getElementById('selection_sort').style.display="none";
+			document.getElementById('merge_sort').style.display="none";
+			document.getElementById('quick_sort').style.display="none";
+			document.getElementById('heap_sort').style.display="none";
+			var temp,pos;
+			for(i=1;i<count;i++)
+			{
+				alert("Iteration no: "+(i));
+				pos=i;
+				while(pos>0 && number[pos]<number[pos-1])
+				{
+					for(k=0;k<count;k++)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+						cir.fillStyle = 'green';						
+						cir.fill();
+						cir.lineWidth = 3.5;
+						if(k==pos || k==(pos-1))
+							cir.strokeStyle='red';
+						else
+							cir.strokeStyle = 'black';						
+						cir.stroke();
+						cir.fillStyle = 'black';
+						cir.translate(xcoordinates[k], ycoordinates[k]);	
+						cir.font = 'bold 20px Arial';						
+						cir.fillText(number[k].toString(), -27, 5);				
+						cir.translate(-xcoordinates[k],-ycoordinates[k]);
+					}
+					tot_swaps++;
+					tot_comparisions++;
+					temp=number[pos];
+					number[pos]=number[pos-1];
+					number[pos-1]=temp;
+					document.getElementById('info4_sort').style.fontSize="20px";
+					document.getElementById('info4_sort').innerHTML="Comparing "+number[pos-1]+" with "+number[pos]+".";
+					alert("Comparing "+number[pos-1]+" with "+number[pos]);
+					document.getElementById('info5_sort').style.fontSize="20px";
+					document.getElementById('info5_sort').innerHTML="Swapped "+number[pos-1]+" with "+number[pos]+".";
+					alert("Swapping "+number[pos-1]+" with "+number[pos]);
+					pos--;
+				}
+				if(pos!=0)
+					tot_comparisions++;
+			}	
+			for(k=0;k<count;k++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+				cir.fillStyle = 'green';						
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[k], ycoordinates[k]);	
+				cir.font = 'bold 20px Arial';						
+				cir.fillText(number[k].toString(), -27, 5);				
+				cir.translate(-xcoordinates[k],-ycoordinates[k]);
+			}	
+			document.getElementById('info3_sort').innerHTML="Performed Insertion Sort.";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			document.getElementById('info5_sort').style.fontSize="20px";
+			document.getElementById('info5_sort').innerHTML="Total number of swaps required: "+tot_swaps;
+			alert("Insertion Sorting completed.");
+		}
+		function implementLinearSearch()
+		{
+			tot_comparisions=0;
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Linear Search.";
+			document.getElementById('linear_search').style.display="none";
+			document.getElementById('binary_search').style.display="none";
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			key=prompt("Enter number to be searched.",number[count]);
+			while(isNaN(key) || key==null)
+			{
+				key=prompt("Enter a valid number",number[count]);
+			}
+			key=parseInt(key);
+			for(i=0;i<count;i++)
+			{
+				tot_comparisions++;
+				for(k=0;k<count;k++)
+				{
+					cir.beginPath();
+					cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+					cir.fillStyle = 'green';						
+					cir.fill();
+					cir.lineWidth = 3.5;
+					if(k==i)
+						cir.strokeStyle='red';
+					else
+						cir.strokeStyle = 'black';						
+					cir.stroke();
+					cir.fillStyle = 'black';
+					cir.translate(xcoordinates[k], ycoordinates[k]);	
+					cir.font = 'bold 20px Arial';						
+					cir.fillText(number[k].toString(), -27, 5);				
+					cir.translate(-xcoordinates[k],-ycoordinates[k]);
+				}
+				document.getElementById('info4_sort').style.fontSize="20px";
+				document.getElementById('info4_sort').innerHTML="Comparing "+number[i]+" with "+key+".";
+				alert("Comparing "+number[i]+" with "+key);
+				document.getElementById('info5_sort').style.fontSize="20px";
+				document.getElementById('info5_sort').innerHTML=key+" not found so far.";
+				if(number[i]==key)
+				{
+					document.getElementById('info5_sort').style.fontSize="20px";
+					document.getElementById('info5_sort').innerHTML=key+ " found at position "+ (i+1);
+					alert(key+" found at position "+ (i+1));
+					break;
+				}
+			}
+			if(i==count)
+			{
+				document.getElementById('info5_sort').style.fontSize="20px";
+				document.getElementById('info5_sort').innerHTML=key+" not present in the array.";
+				alert(key+" is not present in the array");
+				
+			}	
+			document.getElementById('info3_sort').innerHTML="Performed Linear Search.";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			alert("Linear Search completed.");
+		}
+		function implementBinarySearch()
+		{
+			document.getElementById('linear_search').style.display="none";
+			document.getElementById('binary_search').style.display="none";
+			for(i=0;i<count;i++)
+			{
+				number[i]=number_copy[i];
+			}
+			key=prompt("Enter number to be searched.",number[count]);
+			while(isNaN(key) || key==null)
+			{
+				key=prompt("Enter a valid number",number[count]);
+			}
+			key=parseInt(key);
+			alert("For binary sort, the array must be sorted.");
+			implementBubbleSort();
+			tot_comparisions=0;
+			alert("Now performing binary search.");
+			document.getElementById('info3_sort').style.fontSize="20px";
+			document.getElementById('info3_sort').style.color="white";
+			document.getElementById('info3_sort').innerHTML="Performing Linear Search.";
+			var first,last,mid;
+			first=0;
+			last=count-1;
+			mid=parseInt((first+last)/2);
+			while(first<=last)
+			{
+				tot_comparisions++;
+				for(k=0;k<count;k++)
+				{
+					cir.beginPath();
+					cir.arc(xcoordinates[k], ycoordinates[k], 40,0, 2 * Math.PI);
+					cir.fillStyle = 'green';						
+					cir.fill();
+					cir.lineWidth = 3.5;
+					if(k==mid)
+						cir.strokeStyle='red';
+					else
+						cir.strokeStyle = 'black';						
+					cir.stroke();
+					cir.fillStyle = 'black';
+					cir.translate(xcoordinates[k], ycoordinates[k]);	
+					cir.font = 'bold 20px Arial';						
+					cir.fillText(number[k].toString(), -27, 5);				
+					cir.translate(-xcoordinates[k],-ycoordinates[k]);
+				}
+				document.getElementById('info4_sort').style.fontSize="20px";
+				document.getElementById('info4_sort').innerHTML="Comparing "+number[mid]+" with "+key+".";
+				alert("Comparing "+number[mid]+" with "+key);
+				document.getElementById('info5_sort').style.fontSize="20px";
+				document.getElementById('info5_sort').innerHTML=key+" not found so far.";
+				if(number[mid]<key)
+					first=mid+1;
+				else if(number[mid]==key)
+				{
+					document.getElementById('info5_sort').style.fontSize="20px";
+					document.getElementById('info5_sort').innerHTML=key+ " found at position "+ (mid+1);
+					alert(key+" found at position "+(mid+1));
+					break;
+				}
+				else
+					last=mid-1;
+				mid=parseInt((first+last)/2);
+			}
+			if(first>last)
+			{
+				document.getElementById('info5_sort').style.fontSize="20px";
+				document.getElementById('info5_sort').innerHTML=key+" not present in the array.";
+				alert(key+" is not present in the array.");
+			}
+			document.getElementById('info3_sort').innerHTML="Performed Binary Search.";
+			document.getElementById('info4_sort').innerHTML="Total number of comparisions: "+tot_comparisions;
+			alert("Binary Search completed.");
+		}
+		function getNodes(event)
+		{
+			x=event.x-canvas.offsetLeft;
+			y=event.y-canvas.offsetTop;
+			for(i=0;i<num;i++)
+			{
+				dist=Math.sqrt(Math.pow((x-xcoordinates[i]),2)+Math.pow((y-ycoordinates[i]),2));
+				if(dist<=20)
+				{
+					ch=1;
+					alert("A node already exists in that region.");
+					break;
+				}
+				else
+					ch=0;
+			}
+			if(ch==0)
+			{
+				xcoordinates[num]=x;
+				ycoordinates[num]=y;
+				drawCircleBlack(x,y,20);
+				numberInsideCircle(x,y,num,-10);		
+				num++;
+				ch=1;
+				document.getElementById('info2').style.fontSize="20px";
+				document.getElementById('info2').innerHTML="Total number of vertices created: "+num;			//displays the total number of vertices created by the user
+				document.getElementById('info3').style.fontSize="20px";
+				document.getElementById('info3').innerHTML="The last node created is: "+(num-1);
+			}
+		}
+		function drawCircleBlack(x,y,r)
+		{
+			cir.fillStyle='green';
+			cir.beginPath();
+			cir.arc(x,y,r,0,2*Math.PI);
+			cir.fill();
+			cir.lineWidth=3.5;
+			cir.strokeStyle='black';
+			cir.stroke();
+		}
+		function numberInsideCircle(x,y,num,z)
+		{
+			z=parseInt(z);
+			cir.fillStyle='black';
+			cir.translate(x,y);
+			cir.font='bold 20px Arial';
+			cir.fillText(num.toString(),z, 5);
+			cir.translate(-x,-y);
+		}
+		var adj_copy=[];
+		function loadPageThreeGraph()
+		{
+			canvas.removeEventListener("mousedown", getNodes, false);
+			document.getElementById('submitnode').style.display="none";
+			document.getElementById('savegraph').style.display="block";
+			document.getElementById('info1').style.color="white";
+			document.getElementById('info1').style.textAlign="center";
+			document.getElementById('info1').style.fontSize="25px";
+			document.getElementById('info1').innerHTML="Select any two nodes in succession to draw an edge between them.";	
+			document.getElementById('info2').innerHTML="";
+			document.getElementById('info3').innerHTML="";
+			document.getElementById('info4').style.color="white";
+			document.getElementById('info4').style.textAlign="center";
+			document.getElementById('info4').style.fontSize="25px";
+			document.getElementById('info4').innerHTML="Click on the green button below to save the graph.";
+			for(i=0;i<num;i++)
+			{
+				adjacency[i]=[];
+				adj_copy[i]=[];
+				for(j=0;j<num;j++)
+				{
+					adjacency[i][j]=0;
+					adj_copy[i][j]=0;
+				}
+				inqueue[i]=0;
+				visited[i]=0;
+				depth[i]=0;
+			}
+			canvas.addEventListener("mousedown",getEdges,false);
+		}
+		
+		function getEdges(event)
+		{
+			x=event.x-canvas.offsetLeft;
+			y=event.y-canvas.offsetTop;
+			for(i=0;i<num;i++)
+			{
+				dist=Math.sqrt(Math.pow((x-xcoordinates[i]),2)+Math.pow((y-ycoordinates[i]),2));
+				if(dist<=20)
+				{
+					cir.beginPath();
+					cir.arc(xcoordinates[i],ycoordinates[i],20,0,2*Math.PI);
+					cir.lineWidth=3.5;
+					cir.strokeStyle="red";
+					cir.stroke();
+					if(nodecount==0)
+					{
+						firstnode=i;
+						document.getElementById('info2').style.fontSize="20px";
+						document.getElementById('info2').innerHTML="First node selected is "+firstnode+".";
+						document.getElementById('info3').style.fontSize="20px";
+						document.getElementById('info3').innerHTML="Select another node.";
+						nodecount++;
+					}
+					else
+					{
+						if(i!=firstnode)
+						{
+							nodecount=0;
+							secondnode=i;
+							document.getElementById('info3').style.fontSize="20px";
+							document.getElementById('info3').innerHTML="Second node selected is "+secondnode+".";
+							cost=null;
+							cost=prompt("Enter cost to traverse along this edge","1");
+							if(cost==null || isNaN(cost))
+							{
+								do
+								{
+									cost=prompt("Cost for traversing should be a number.","1");
+								}while(cost==null || isNaN(cost));
+							}
+							adjacency[firstnode][secondnode]=cost;
+							adjacency[secondnode][firstnode]=cost;
+							adj_copy[firstnode][secondnode]=cost;
+							adj_copy[secondnode][firstnode]=1000;
+							cir.beginPath();
+							cir.arc(xcoordinates[firstnode], ycoordinates[firstnode], 20,0, 2 * Math.PI);		
+							cir.lineWidth = 3.5;
+							cir.strokeStyle = 'black';								
+							cir.stroke();
+							cir.closePath();
+							cir.beginPath();
+							cir.arc(xcoordinates[secondnode], ycoordinates[secondnode], 20,0, 2 * Math.PI);		
+							cir.lineWidth = 3.5;									
+							cir.strokeStyle = 'black';								
+							cir.stroke();
+							cir.closePath();
+							cir.beginPath();
+							cir.strokeStyle='black';							
+							cir.moveTo(xcoordinates[firstnode],ycoordinates[firstnode]);
+							cir.lineTo(xcoordinates[secondnode],ycoordinates[secondnode]);			
+							cir.stroke();	
+							
+							cir.fillStyle = 'black';							
+							cir.translate((xcoordinates[firstnode]+xcoordinates[secondnode])/2, (ycoordinates[firstnode]+ycoordinates[secondnode])/2);
+							cir.font = 'bold 20px Arial';
+							cir.fillText(cost.toString(), 10,35);												
+							cir.translate(-(xcoordinates[firstnode]+xcoordinates[secondnode])/2, -(ycoordinates[firstnode]+ycoordinates[secondnode])/2);
+							cir.stroke();
+
+							cir.beginPath();
+							cir.arc(xcoordinates[firstnode], ycoordinates[firstnode], 20,0, 2 * Math.PI);
+							cir.fillStyle = 'green';						
+							cir.fill();
+							cir.lineWidth = 3.5;
+							cir.strokeStyle = 'black';						
+							cir.stroke();
+							cir.fillStyle = 'black';
+							cir.translate(xcoordinates[firstnode], ycoordinates[firstnode]);	
+							cir.font = 'bold 20px Arial';						
+							cir.fillText(firstnode.toString(), -5, 5);				
+							cir.translate(-xcoordinates[firstnode],-ycoordinates[firstnode]);
+
+							cir.beginPath();
+							cir.arc(xcoordinates[secondnode], ycoordinates[secondnode], 20,0, 2 * Math.PI);
+							cir.fillStyle = 'green';						
+							cir.fill();
+							cir.lineWidth = 3.5;
+							cir.strokeStyle = 'black';						
+							cir.stroke();
+							cir.fillStyle = 'black';
+							cir.translate(xcoordinates[secondnode], ycoordinates[secondnode]);
+							cir.font = 'bold 20px Arial';						
+							cir.fillText(secondnode.toString(), -5, 5);				
+							cir.translate(-xcoordinates[secondnode],-ycoordinates[secondnode]);		
+						}
+						else
+						{
+							alert("This node is already selected. Select another node"); 		
+						}
+					}
+				}
+			}
+		}
+		function saveGraph()
+		{
+			canvas.removeEventListener("mousedown", getEdges, false);
+			document.getElementById('savegraph').style.display="none";
+			document.getElementById('instr1').style.display="none";
+			document.getElementById('enterroot').style.display="block";
+			document.getElementById('entergoal').style.display="block";
+			document.getElementById('selectalgo').style.display="block";
+			document.getElementById('result').style.display="block";
+		}
+		function inputRootNode()
+		{
+			root=prompt("Enter root node","0");
+			while(isNaN(root) || root>=num || root==null)
+			{
+				root=prompt("Enter a valid root node","0");
+			}
+			root=parseInt(root);
+			document.getElementById('info5').style.fontSize="20px";
+			document.getElementById('info5').innerHTML="Root node selected is "+root+".";
+			openlist.push(root);
+			k++;
+		}
+		function inputGoalNode()
+		{
+			goal=prompt("Enter goal node",num-1);
+			while(isNaN(goal) || goal>=num || goal==null)
+			{
+				goal=prompt("Enter a valid goal node","0");
+			}
+			goal=parseInt(goal);
+			document.getElementById('info6').style.fontSize="20px";
+			document.getElementById('info6').innerHTML="Goal node selected is "+goal+".";
+		}
+		function selectAlgorithm()
+		{
+			document.getElementById('dfs').style.display="block";
+			document.getElementById('bfs').style.display="block";
+			document.getElementById('dfid').style.display="block";
+			document.getElementById('dijikstra').style.display="block";
+			document.getElementById('astar').style.display="block";
+		}
+		var heuristic=[];
+		var arrayf=[];
+		var costmatrix=[];
+		
+		function implementDijikstra()
+		{
+			resetChanges();
+			if(root==null || goal==null)
+			{
+				alert("Enter root and goal nodes to proceed");
+			}
+			else
+			{	
+				document.getElementById('info7').style.display="block";
+				document.getElementById('info7').style.fontSize="20px";				
+				document.getElementById('info7').innerHTML="Red nodes are in open list, blue nodes are in closed list.";
+				document.getElementById('dfs').style.display="none";
+				document.getElementById('bfs').style.display="none";
+				document.getElementById('dfid').style.display="none";	
+				document.getElementById('dijikstra').style.display="none";
+				document.getElementById('astar').style.display="none";
+				for(i=0;i<num;i++)
+				{
+					for(j=0;j<num;j++)
+					{
+						adjacency[i][j]=adj_copy[i][j];
+					}
+					heuristic[i]=0;
+					arrayf[i]=0;
+					costmatrix[i]=0;
+					//closedlist[i]=0;
+				}
+				node=openlist.shift();			
+				closedlist.push(node);			
+				alert("Node traversed: "+node);		
+				cir.beginPath();
+				cir.arc(xcoordinates[node], ycoordinates[node], 20,0, 2 * Math.PI);
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'blue';			
+				cir.stroke();
+				while(node!=null)
+				{
+					if(node==goal)		//Check whether current node traversed is the goal node or not
+					{
+						alert("Goal found.");
+						cir.beginPath();
+						cir.arc(xcoordinates[node], ycoordinates[node], 20,0, 2 * Math.PI);
+						cir.lineWidth = 3.5;
+						cir.strokeStyle = 'white';		//Color the outline of the node to white depicting that this node is goal node.
+						cir.stroke();
+						cir.closePath();
+						createPath();				//Call the path function to trace the path from root to goal node.
+						break;				//End execution as goal has already been found.
+					}
+					astargetchild();				//Call the astargetchild function to add the neighbours of current node to openlist for traversal and compute the value of g for each node.
+					calculatef();				//Call the calculatef function to calculate the value of f for each node.
+					sortopenlist();				//Call the sortopenlist function to sort the open list with respect to the f values calculated in an ascending order.
+					node=openlist.shift();				//Remove the best suited option from open list for traversal.
+					closedlist.push(node);				//Push the node in closed list as it is now traversed.
+					alert("Node being traversed: "+node);		//Alert the user about the node being traversed.
+					cir.beginPath();
+					cir.arc(xcoordinates[node], ycoordinates[node], 20,0, 2 * Math.PI);
+					cir.lineWidth = 3.5;
+					cir.strokeStyle = 'blue';				//Color the outline of the node to blue depicting node is in closed list.
+					cir.stroke();
+					count--;					//Decrease 1 from the number of nodes in open list as 1 node as just been removed.
+					document.getElementById('info9').style.display="block";
+					document.getElementById('info9').style.fontSize="20px";
+					document.getElementById('info9').innerHTML="Closed list: "+closedlist+".";		
+				}
+			}
+		}
+		function implementAStar()
+		{
+			resetChanges();
+			if(root==null || goal==null)
+			{
+				alert("Enter root and goal nodes to proceed");
+			}
+			else
+			{	
+				document.getElementById('info7').style.display="block";
+				document.getElementById('info7').style.fontSize="20px";				
+				document.getElementById('info7').innerHTML="Red nodes are in open list, blue nodes are in closed list.";
+				document.getElementById('dfs').style.display="none";
+				document.getElementById('bfs').style.display="none";
+				document.getElementById('dfid').style.display="none";	
+				document.getElementById('dijikstra').style.display="none";
+				document.getElementById('astar').style.display="none";
+				for(i=0;i<num;i++)
+				{
+					heuristic[i]=0;
+					arrayf[i]=0;
+					costmatrix[i]=0;
+					//closedlist[i]=0;
+				}
+				for(i=0;i<num;i++)
+				{
+					c=0;
+					if(i!=goal)
+						c=prompt("Enter heuristic cost of traversing from "+i+" from "+goal,"0"); 
+					heuristic[i]=parseInt(c);		//Convert the heuristic value to integer before assigning it to the heuristic array.
+				}
+				node=openlist.shift();			
+				closedlist.push(node);			
+				alert("Node traversed: "+node);		
+				cir.beginPath();
+				cir.arc(xcoordinates[node], ycoordinates[node], 20,0, 2 * Math.PI);
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'blue';			
+				cir.stroke();
+				while(node!=null)
+				{
+					if(node==goal)		//Check whether current node traversed is the goal node or not
+					{
+						alert("Goal found.");
+						cir.beginPath();
+						cir.arc(xcoordinates[node], ycoordinates[node], 20,0, 2 * Math.PI);
+						cir.lineWidth = 3.5;
+						cir.strokeStyle = 'white';		//Color the outline of the node to white depicting that this node is goal node.
+						cir.stroke();
+						cir.closePath();
+						createPath();				//Call the path function to trace the path from root to goal node.
+						break;				//End execution as goal has already been found.
+					}
+					astargetchild();				//Call the astargetchild function to add the neighbours of current node to openlist for traversal and compute the value of g for each node.
+					calculatef();				//Call the calculatef function to calculate the value of f for each node.
+					sortopenlist();				//Call the sortopenlist function to sort the open list with respect to the f values calculated in an ascending order.
+					node=openlist.shift();				//Remove the best suited option from open list for traversal.
+					closedlist.push(node);				//Push the node in closed list as it is now traversed.
+					alert("Node being traversed: "+node);		//Alert the user about the node being traversed.
+					cir.beginPath();
+					cir.arc(xcoordinates[node], ycoordinates[node], 20,0, 2 * Math.PI);
+					cir.lineWidth = 3.5;
+					cir.strokeStyle = 'blue';				//Color the outline of the node to blue depicting node is in closed list.
+					cir.stroke();
+					count--;					//Decrease 1 from the number of nodes in open list as 1 node as just been removed.
+					document.getElementById('info9').style.display="block";
+					document.getElementById('info9').style.fontSize="20px";
+					document.getElementById('info9').innerHTML="Closed list: "+closedlist+".";		
+				}
+			}
+		}
+		function astargetchild()
+		{
+			i=0;
+			while(i<num)		//Loop from 0 to num-1
+			{
+				if(adjacency[node][i]>0)	//Check whether an edge exists for the nodepair (node,i)
+				{
+					openlist.push(i);	//If yes, then push i into openlist
+					count++;		//Increase value of count by 1.
+					if(i!=parent[node] && costmatrix[i]==0)
+						parent[i]=node;		//Parentnode of i is the current node.
+					if((costmatrix[node]+parseInt(adjacency[node][i]))<costmatrix[i])
+						parent[i]=node;		//Parentnode of i is the current node.
+					costmatrix[i]=costmatrix[node]+parseInt(adjacency[node][i]);		//Calculate value of g for that node.
+					cir.beginPath();
+					cir.arc(xcoordinates[i], ycoordinates[i], 20,0, 2 * Math.PI);
+					cir.lineWidth = 3.5;
+					cir.strokeStyle = 'red';			//Change the outline of that node to red depicting that node is in openlist.
+					cir.stroke();
+					cir.closePath();
+				}
+				i++;			//Increment loop variable.
+			}
+		}
+		function calculatef()
+		{
+			i=0;
+			while(i<num)	//Loop from 0 to num-1
+			{
+				arrayf[i]=heuristic[i]+costmatrix[i];	//Calculate f, where f=g+h;
+				i++;		//Increment loop variable.
+			}
+		}
+	
+		function sortopenlist()
+		{
+			var temp=0;		//temp is a temporary variable for swapping.
+			/*Bubble sorting.*/
+			for(i=0;i<count;i++)		
+			{
+				for(j=0;j<(count-1-i);j++)
+				{
+					if(arrayf[openlist[j]]>arrayf[openlist[j+1]])	//If value of f for the adjacent node is less than the value of f of current node, swap them.
+					{
+						temp=openlist[j];
+						openlist[j]=openlist[j+1];
+						openlist[j+1]=temp;
+					}
+				}
+			}		
+		}
+
+		function implementDFS(Depth)
+		{
+			resetChanges();
+			if(root==null || goal==null)
+			{
+				alert("Enter root and goal nodes to proceed");
+			}
+			else
+			{	
+				document.getElementById('info7').style.display="block";
+				document.getElementById('info7').style.fontSize="20px";				
+				document.getElementById('info7').innerHTML="Red nodes are in open list, blue nodes are in closed list.";
+				document.getElementById('dfs').style.display="none";
+				document.getElementById('bfs').style.display="none";
+				document.getElementById('dfid').style.display="none";	
+				document.getElementById('dijikstra').style.display="none";
+				document.getElementById('astar').style.display="none";
+				node=parseInt(openlist.pop());
+				k--;
+				while(node!=null)
+				{
+					if(node==goal)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[node],ycoordinates[node],20,0,2*Math.PI);
+						cir.lineWidth=3.5;
+						cir.strokeStyle='white';
+						cir.stroke();
+						cir.closePath();
+						createPath();
+						found=1;
+						break;
+					}
+					closedlist.push(node);
+					document.getElementById('info9').style.display="block";				
+					document.getElementById('info9').style.fontSize="20px";
+					document.getElementById('info7').style.display="block";
+					document.getElementById('info8').style.fontSize="20px";
+					document.getElementById('info8').innerHTML="Open list: "+openlist;
+					document.getElementById('info9').innerHTML="Closed list: "+closedlist;
+					alert("Node "+node+" visited. Not the goal node. Inserted into closed list.");
+					getChildDFS(Depth);
+					visited[node]=1;		 
+					cir.beginPath();
+					cir.arc(xcoordinates[node],ycoordinates[node],20,0,2*Math.PI);
+					cir.lineWidth=3.5;
+					cir.strokeStyle='blue';
+					cir.stroke();
+					cir.closePath();
+					if(k>0)
+					{
+						node=parseInt(openlist.pop());
+						k--;
+					}
+					else
+						break;
+				}
+				if(found==0)
+				{
+					alert("Goal not found at depth "+maxDepth);
+				}
+			}
+		}
+		function getChildDFS(Depth)
+		{
+			i=num-1;								
+			while(i>=0)
+			{
+				if(adjacency[node][i]>0 && visited[i]==0 && inqueue[i]==0 && depth[node]<Depth)																  
+				{
+					openlist.push(i);
+					k++;
+					depth[i]=depth[node]+1;
+					document.getElementById('info8').style.fontSize="20px";
+					document.getElementById('info8').innerHTML="Open list: "+openlist;				
+					cir.beginPath();
+					cir.arc(xcoordinates[i], ycoordinates[i], 20,0, 2 * Math.PI);
+					cir.lineWidth = 3.5;
+					cir.strokeStyle = 'red';				
+					cir.stroke();
+					cir.closePath();
+					inqueue[i]=1;					
+					parent[i]=node;					
+				}
+				i--;								
+			}
+		}
+		function createPath()
+		{
+			cost=0;
+			i=goal;
+			//document.getElementById('info8').style.fontSize="20px";
+			//document.getElementById('info8').innerHTML="Open list: "+openlist;
+			while(i!=root)
+			{
+				cost+=parseInt(adjacency[parent[i]][i]);						
+				cir.beginPath();
+				cir.strokeStyle='white';							
+				cir.moveTo(xcoordinates[i],ycoordinates[i]);
+				cir.lineTo(xcoordinates[parent[i]],ycoordinates[parent[i]]);
+				cir.stroke();
+				cir.beginPath();
+				cir.arc(xcoordinates[i], ycoordinates[i], 20,0, 2 * Math.PI);
+				cir.fillStyle = 'green';
+				cir.fill();
+				cir.lineWidth = 3.5;
+				if(i==goal)
+					cir.strokeStyle = 'white';						
+				else
+					cir.strokeStyle = 'blue';						
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[i], ycoordinates[i]);
+				cir.font = 'bold 20px Arial';
+				cir.fillText(i.toString(), -5, 5);
+				cir.translate(-xcoordinates[i],-ycoordinates[i]);
+				cir.beginPath();
+				cir.arc(xcoordinates[parent[i]], ycoordinates[parent[i]], 20,0, 2 * Math.PI);
+				cir.fillStyle = 'green';							
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'blue';
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[parent[i]], ycoordinates[parent[i]]);
+				cir.font = 'bold 20px Arial';
+				cir.fillText(parent[i].toString(), -5, 5);				
+				cir.translate(-xcoordinates[parent[i]],-ycoordinates[parent[i]]);
+				i=parent[i];
+			}		
+			document.getElementById('info7').innerHTML="The total cost for traversing from "+root+" to "+goal+" is  "+cost+ ".";
+			alert("Cost of traversing from "+root+" to "+goal+" is "+cost+".");
+		}
+		function resetChanges()
+		{
+			for(i=0;i<num;i++)
+			{
+				visited[i]=0;			 
+				inqueue[i]=0;			
+				parent[i]=null;
+				depth[i]=0;							
+			}
+			while(openlist.pop()!=null)			
+			{
+			}
+			while(closedlist.pop()!=null)
+			{
+			}
+			found=0;
+			openlist.push(root);	
+			k=1;		
+			for(i=0;i<num;i++)
+			{
+				for(j=0;j<num;j++)
+				{
+					if(adjacency[i][j]>0)		
+					{
+						cir.beginPath();					
+						cir.strokeStyle='black';				
+						cir.moveTo(xcoordinates[i],ycoordinates[i]);
+						cir.lineTo(xcoordinates[j],ycoordinates[j]);
+						cir.stroke();
+					}
+				}
+			}
+			for(i=0;i<num;i++)
+			{
+				cir.beginPath();
+				cir.arc(xcoordinates[i], ycoordinates[i], 20,0, 2 * Math.PI);
+				cir.fillStyle = 'green';					
+				cir.fill();
+				cir.lineWidth = 3.5;
+				cir.strokeStyle = 'black';					
+				cir.stroke();
+				cir.fillStyle = 'black';
+				cir.translate(xcoordinates[i], ycoordinates[i]);
+				cir.font = 'bold 20px Arial';
+				cir.fillText(i.toString(), -5, 5);				
+				cir.translate(-xcoordinates[i],-ycoordinates[i]);
+			}
+		}
+		function implementBFS()
+		{
+			resetChanges();
+			if(root==null || goal==null)
+			{
+				alert("Enter root and goal nodes to proceed");
+			}
+			else
+			{
+				document.getElementById('info7').style.display="block";
+				document.getElementById('info7').style.fontSize="20px";				
+				document.getElementById('info7').innerHTML="Red nodes are in open list, blue nodes are in closed list.";
+				document.getElementById('dfs').style.display="none";
+				document.getElementById('bfs').style.display="none";
+				document.getElementById('dfid').style.display="none";	
+				document.getElementById('dijikstra').style.display="none";
+				document.getElementById('astar').style.display="none";
+				node=parseInt(openlist.shift());
+				while(node!=null)
+				{
+					if(node==goal)
+					{
+						cir.beginPath();
+						cir.arc(xcoordinates[node],ycoordinates[node],20,0,2*Math.PI);
+						cir.lineWidth=3.5;
+						cir.strokeStyle='white';
+						cir.stroke();
+						cir.closePath();
+						createPath();
+						break;
+					}
+					closedlist.push(node);
+					//document.getElementById('info9').style.display="block";				
+					//document.getElementById('info9').style.fontSize="20px";
+					document.getElementById('info7').style.display="block";
+					//document.getElementById('info8').style.fontSize="20px";
+					//document.getElementById('info8').innerHTML="Open list: "+openlist;
+					//document.getElementById('info9').innerHTML="Closed list: "+closedlist;
+					alert("Node "+node+" visited. Not the goal node. Inserted into closed list.");
+					getChildBFS();
+					visited[node]=1;		 
+					cir.beginPath();
+					cir.arc(xcoordinates[node],ycoordinates[node],20,0,2*Math.PI);
+					cir.lineWidth=3.5;
+					cir.strokeStyle='blue';
+					cir.stroke();
+					cir.closePath();
+					node=parseInt(openlist.shift());
+				}
+			}
+		}
+		function getChildBFS()
+		{
+			i=0;								
+			while(i<num)
+			{
+				if(adjacency[node][i]>0 && visited[i]==0 && inqueue[i]==0)																  
+				{
+					openlist.push(i);
+					//document.getElementById('info8').style.fontSize="20px";
+					//document.getElementById('info8').innerHTML="Open list: "+openlist;				
+					cir.beginPath();
+					cir.arc(xcoordinates[i], ycoordinates[i], 20,0, 2 * Math.PI);
+					cir.lineWidth = 3.5;
+					cir.strokeStyle = 'red';				
+					cir.stroke();
+					cir.closePath();
+					inqueue[i]=1;					
+					parent[i]=node;					
+				}
+				i++;								
+			}
+		}
+		function implementDFID()
+		{
+			resetChanges();
+			if(root==null || goal==null)
+			{
+				alert("Enter root and goal nodes to proceed");
+			}
+			else
+			{
+				maxDepth=0;
+				document.getElementById('dfs').style.display="none";
+				document.getElementById('bfs').style.display="none";
+				document.getElementById('dfid').style.display="none";
+				document.getElementById('dijikstra').style.display="none";
+				document.getElementById('astar').style.display="none";
+				while(found==0)
+				{
+					alert("For depth "+maxDepth+".");
+					resetChanges();
+					implementDFS(maxDepth);	
+					maxDepth++;
+				}	
+				maxDepth--;
+				alert("Goal found at depth "+maxDepth+".");	
+			}
+		}
+	</script>
+</html>
+			
